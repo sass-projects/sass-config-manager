@@ -8,7 +8,7 @@ module.exports = {
     files: {
         'config-manager.scss': [
             'base/*',
-            'utils/*',
+            'utils/*'
         ]
     }
 };

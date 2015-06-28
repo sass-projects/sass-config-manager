@@ -1,2 +1,24 @@
 // Sass Mixins
 // - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// Sets a value to a configuration path
+//
+// @mixin config-set
+//
+// @param $key    {string} The configuration key
+// @param $value   {*|null} The value to set
+// @param $default {bool}   Whether the configuration is default
+@mixin config-set($key, $value, $default: false) {
+  $config: config-set($key, $value, $default);
+}
+
+// Sets a values to a configuration path
+//
+// @mixin config-bind
+//
+// @param $key     {string} The configuration key
+// @param $value   {list}   The value to set
+// @param $default {bool}   Whether the configuration is default
+@mixin config-bind($key, $values, $default: false) {
+  $config: config-bind($key, $values, $default);
+}

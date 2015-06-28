@@ -1,3 +1,14 @@
 // Sass Variables
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
+// The delimiter of configuration path
+// @private
+$config-delimiter: '.' !default;
+
+// The configuration storage
+// @private
+$config-attr: () !default;
+
+// The default configuration storage
+// @private
+$config-default: () !default;
