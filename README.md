@@ -5,13 +5,13 @@
 [![David](https://img.shields.io/david/growcss/sass-config-manager.svg?style=flat-square)](https://david-dm.org/growcss/sass-config-manager#info=dependencies&view=table)
 [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/sass-config-manager)
 [![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg?style=flat-square)](https://github.com/growcss/sass-config-manager/releases)
-[![Software License](https://img.shields.io/badge/license-:package_license-brightgreen.svg?style=flat-square)](LICENSE)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
 ## Master
-[![Build Status](https://img.shields.io/travis/growcss/sass-config-manager/master.svg?style=flat-square)](https://travis-ci.org/growcss/sass-config-manager)
+[![Build Status](https://img.shields.io/travis/growcss/sass-config-manager.svg?branch=develop&style=flat-square)](https://travis-ci.org/growcss/sass-config-manager)
 
 ## Develop
-[![Build Status](https://img.shields.io/travis/growcss/sass-config-manager/master.svg?style=flat-square)](https://travis-ci.org/growcss/sass-config-manager)
+[![Build Status](https://img.shields.io/travis/growcss/sass-config-manager.svg?branch=develop&style=flat-square)](https://travis-ci.org/growcss/sass-config-manager)
 
 ### Bits and Pieces:
 * [npm:](https://npmjs.org/) Well... it's a Node.js package manager
