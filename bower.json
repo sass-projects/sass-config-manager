@@ -1,0 +1,25 @@
+{
+  "name": "growcss-sass-config-manager",
+  "version": "0.0.0",
+  "homepage": "http://growcss.com/",
+  "authors": [
+    "Daniel Bannert <d.bannert@anolilab.de>"
+  ],
+  "description": "A dot-syntax configuration (Map) library for Sass (mixin / function).",
+  "moduleType": [
+    "amd",
+    "node"
+  ],
+  "keywords": [
+    "grunt",
+    "bower"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

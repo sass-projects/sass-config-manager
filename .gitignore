@@ -1,2 +1,8 @@
+node_modules
+dist
 .sass-cache
-*.css.map
+bower_components
+test/bower_components
+node_modules
+npm-debug.log
+tmp
