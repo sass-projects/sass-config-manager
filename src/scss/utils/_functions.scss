@@ -12,13 +12,13 @@
 // @return         {*}      The value of the configuration path
 @function config-set($key, $value, $default: false) {
   @if $default {
-    @if config-map-has($config-default, $path) {
-      $value: config-map-get($config-default, $path);
+    @if config-map-has($config-default, $key) {
+      $value: config-map-get($config-default, $key);
     } @else {
-      $config-default: config-map-set($config-default, $path, $value) !global;
+      $config-default: config-map-set($config-default, $key, $value) !global;
     }
   } @else {
-    $config-attr: config-map-set($config-attr, $path, $value) !global;
+    $config-attr: config-map-set($config-attr, $key, $value) !global;
   }
 
   @return $value;
@@ -34,14 +34,14 @@
 // @return         {*}      The value of the configuration path
 @function config-get($key, $default: false) {
   @if $default {
-    @if config-map-has($config-default, $path) {
-      @return config-map-get($config-default, $path);
+    @if config-map-has($config-default, $key) {
+      @return config-map-get($config-default, $key);
     }
   } @else {
-    @if config-map-has($config-attr, $path) {
-      @return config-map-get($config-attr, $path);
-    } @else if config-map-has($config-default, $path) {
-      @return config-map-get($config-default, $path);
+    @if config-map-has($config-attr, $key) {
+      @return config-map-get($config-attr, $key);
+    } @else if config-map-has($config-default, $key) {
+      @return config-map-get($config-default, $key);
     }
   }
 
@@ -54,7 +54,7 @@
 //
 // @function config-bind
 //
-// @param $path    {string} The configuration path
+// @param $key     {string} The configuration path
 // @param $value   {array} The value to set
 // @param $default {bool}   Whether the configuration is default
 //
@@ -64,114 +64,33 @@
     @return config-set($key + $config-delimiter + $value, $value, $default);
   }
 
-  @return config-get($path, $default);
+  @return config-get($key, $default);
 }
 
 // Returns whether a configuration path exists
 //
 // @function config-has
 //
-// @param $path {string} The configuration path
+// @param $key {string} The configuration path
 //
-// @return      {bool}   True if the configuration path has a value,
+// @return     {bool}   True if the configuration path has a value,
 //                           otherwise false
-@function config-has($path) {
-  @if config-map-has($config-attr, $path) or config-map-has($config-default, $path) {
+@function config-has($key) {
+  @if config-map-has($config-attr, $key) or config-map-has($config-default, $key) {
     @return true;
   }
 
   @return false;
 }
 
-// Returns whether the key of a map path exists in a Map
+// Removes keys from maps
 //
-// @function config-map-has
+// @function config-remove
 //
-// @private
+// @param $key {string} The configuration path
 //
-// @param $map  {map}    The Map
-// @param $path {string} The map path
-//
-// @return      {bool}   True if the map path has a value,
-//                            otherwise false
-@function config-map-has($map, $path) {
-  $keys: str-split($path, $config-delimiter);
-  $value: $map;
+// @return     {bool}   True if the configuration path has a value,
+//                           otherwise false
+@function config-remove($key) {
 
-  @each $key in $keys {
-    @if type-of($value) != 'map' or not map-has-key($value, $key) {
-      @return false;
-    }
-
-    $value: map-get($value, $key);
-  }
-
-  @return true;
-}
-
-// Gets a value from a Map by the map path
-//
-// @function config-map-get
-//
-// @private
-//
-// @param $map  {map}    The Map
-// @param $path {string} The map path
-//
-// @return      {*}      The value of the map path
-@function config-map-get($map, $path) {
-  $keys: str-split($path, $config-delimiter);
-  $value: $map;
-
-  @each $key in $keys {
-    @if type-of($value) != 'map' or not map-has-key($value, $key) {
-      @warn 'The path "#{$path}" doesn\'t exist.';
-
-      @return null;
-    }
-
-    $value: map-get($value, $key);
-  }
-
-  @return $value;
-}
-
-// Sets a value to a Map by the map path
-//
-// @function config-map-set
-//
-// @private
-//
-// @param $map   {map}    The Map
-// @param $path  {string} The map path
-// @param $value {*|null} The value to set
-//
-// @return       {map}    A new Map
-@function config-map-set($map, $path, $value) {
-  $keys: str-split($path, $config-delimiter);
-  $length: length($keys);
-  $result: (nth($keys, $length): $value);
-
-  @for $i from 1 through $length - 1 {
-    $j: $length - $i;
-    $key: nth($keys, $j);
-
-    $path: str-join(list-slice($keys, 1, $j), $config-delimiter);
-
-    @if config-map-has($map, $path) {
-      $value: config-map-get($map, $path);
-
-      @if type-of($value) == 'map' {
-        $result: config-map-merge(($key: $value), ($key: $result));
-      } @else {
-        $result: ($key: $result);
-      }
-    } @else {
-      $result: ($key: $result);
-    }
-  }
-
-  $map: config-map-merge($map, $result);
-
-  @return $map;
 }

@@ -2,10 +2,9 @@
 module.exports = {
     'test' : [
         'scsslint',
-        'mochacli',
+        'mochacli'
     ],
     'default': [
-        'test',
-        'sass_import'
+        'test'
     ]
 };
