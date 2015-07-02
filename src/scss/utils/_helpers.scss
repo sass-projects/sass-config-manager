@@ -5,12 +5,12 @@
 //
 // @function str-split
 //
-// @private
+// @access private
 //
-// @param    $string    {string} The string to split
-// @param    $delimiter {string} The boundary string to split the string
+// @param $string    {string} The string to split
+// @param $delimiter {string} The boundary string to split the string
 //
-// @return              {list}   The splitted list
+// @return           {list}   The splitted list
 @function str-split($string, $delimiter: '') {
   $result: ();
   $length: str-length($string);
@@ -44,7 +44,7 @@
 //
 // @function str-join
 //
-// @private
+// @access private
 //
 // @param $list {list}   The list to join
 // @param $glue {string} The glue string to join list elements
@@ -72,7 +72,7 @@
 //
 // @function list-slice
 //
-// @private
+// @access private
 //
 // @param  $list  {list}   The list to extract
 // @param  $start {number} The start index to extract
@@ -93,9 +93,9 @@
 //
 // @function config-map-has
 //
-// @private
+// @access private
 //
-// @param $map {map}    The Map
+// @param $map {map...} The Map
 // @param $key {string} The map path
 //
 // @return     {bool}   True if the map path has a value,
@@ -119,9 +119,9 @@
 //
 // @function config-map-get
 //
-// @private
+// @access private
 //
-// @param $map  {map}    The Map
+// @param $map  {map...} The Map
 // @param $path {string} The map path
 //
 // @return      {*}      The value of the map path
@@ -146,13 +146,13 @@
 //
 // @function config-map-set
 //
-// @private
+// @access private
 //
 // @param $map   {map}    The Map
 // @param $path  {string} The map path
 // @param $value {*|null} The value to set
 //
-// @return       {map}    A new Map
+// @return       {map...} A new Map
 @function config-map-set($map, $path, $value) {
   $keys: str-split($path, $config-delimiter);
   $length: length($keys);
@@ -192,11 +192,11 @@
 //
 // @function config-map-merge
 //
-// @private
+// @access private
 //
-// @param  $maps {map...} The map(s) to merge
+// @param $maps {map...} The map(s) to merge
 //
-// @return       {map}    The merged map
+// @return      {map}    The merged map
 @function config-map-merge($maps...) {
   $result: nth($maps, 1);
 
@@ -217,4 +217,35 @@
   }
 
   @return $result;
+}
+
+// Return the key (first value) from a two-item map
+//
+// @access private
+//
+// @param {map...} $tuple - Tuple
+//
+// @return {* | Null} - Key from `$tuple` or `null`
+@function config-tuple-key($tuple) {
+  @if length($tuple) < 1 {
+    @return null;
+  }
+
+  @return nth($tuple, 1);
+}
+
+// Return the value (second value) from a two-item map
+//
+// @access private
+//
+// @param {map...} $tuple - Tuple
+//
+// @return {* | Null} - Value from `$tuple` or `null`
+@function config-tuple-value($tuple) {
+  @if length($tuple) < 2 {
+    @return null;
+  }
+
+  // @return nth($tuple, 2);
+  @return slice($tuple, 2, length($tuple));
 }

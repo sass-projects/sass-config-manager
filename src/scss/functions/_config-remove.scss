@@ -1,0 +1,11 @@
+// Removes keys from maps
+//
+// @function config-remove
+//
+// @param $key {string} The configuration path
+//
+// @return     {bool}   True if the configuration path has a value,
+//                           otherwise false
+@function config-remove($key) {
+
+}

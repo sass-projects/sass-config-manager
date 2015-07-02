@@ -2,28 +2,59 @@
 @include test-module('Functions') {
 
   // Testing set functions
-  @include test('config-set [function]') {
+  @include test('config-set [function] Set single key.') {
+    @include config-set('single', 'foo');
+
+    $expect: ("single": "foo");
+    @include assert-equal($config-attr, $expect, 'Check if map is correct.');
+  }
+
+  // Testing set functions
+  @include test('config-set [function] Set a dotted key.') {
     @include config-set('test.bar', 'foo');
     @include config-set('test.color', #fff);
 
     $expect: ("test": ("bar": 'foo', "color": #fff));
     @include assert-equal($config-attr, $expect, 'Check if map is correct.');
-
-    $config-attr: ();
   }
 
+  // Testing set functions
+  // @include test('config-bind [function] Set a list of values to a key.') {
+  //   $list: ("config", "sass", "manager", "growcss");
+
+  //   @include config-bind('list', $list);
+
+  //   $expect: ("list": ("config", 'sass', "manager", "growcss"));
+  //   @include assert-equal($config-attr, $expect, 'Check if map is correct.');
+
+  //   $config-attr: ();
+  // }
+
   // Testing get functions
-  @include test('config-get [function]') {
+  @include test('config-get [function] Get a value from key.') {
     @include config-set('test.color', #000);
 
     $get: config-get('test.color');
     $expect: #000;
 
     @include assert-equal($get, $expect, 'Returns test.color: #000');
+  }
 
+  // Testing get functions
+  @include test('config-get [function] Get a map from key.') {
     $get: config-get('test');
     $expect: ("bar": "foo", "color": #000);
 
-    @include assert-equal($get, $expect, 'Returns test map');
+    @include assert-equal($get, $expect, 'Returns test map.');
+
+    $config-attr: ();
+  }
+
+  // Testing get functions
+  @include test('config-get [function] Get null as value and a warning') {
+    $get: config-get('warn');
+    $expect: null;
+
+    @include assert-equal($get, $expect, 'Returns null.');
   }
 }

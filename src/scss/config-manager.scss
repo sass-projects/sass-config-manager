@@ -1,5 +1,11 @@
 // Here are all the functions, helpers, mixins and variables.
 @import 'utils/variables';
 @import 'utils/helpers';
-@import 'utils/functions';
+
+@import 'functions/config-set';
+@import 'functions/config-get';
+@import 'functions/config-bind';
+@import 'functions/config-has';
+@import 'functions/config-remove';
+
 @import 'utils/mixins';

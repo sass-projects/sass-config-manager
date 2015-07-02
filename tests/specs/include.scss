@@ -1,4 +1,8 @@
-@import 'src/scss/utils/functions';
 @import 'src/scss/utils/helpers';
 @import 'src/scss/utils/mixins';
+@import 'src/scss/functions/config-set';
+@import 'src/scss/functions/config-get';
+@import 'src/scss/functions/config-bind';
+@import 'src/scss/functions/config-has';
+@import 'src/scss/functions/config-remove';
 @import 'src/scss/utils/variables';
