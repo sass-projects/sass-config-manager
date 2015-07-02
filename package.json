@@ -1,6 +1,6 @@
 {
   "name": "growcss-sass-config-manager",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A dot-syntax configuration (Map) library for Sass (mixin / function).",
   "author": {
     "name": "Daniel Bannert",

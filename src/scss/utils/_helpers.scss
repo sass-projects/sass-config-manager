@@ -80,13 +80,112 @@
 //
 // @return        {list}   The extracted list
 @function list-slice($list, $start: 1, $end: length($list)) {
-  $result: ();
+  $output: ();
 
   @for $i from $start through $end {
-    $result: append($result, nth($list, $i));
+    $output: append($output, nth($list, $i));
   }
 
-  @return $result;
+  @return $output;
+}
+
+// Returns whether the key of a map path exists in a Map
+//
+// @function config-map-has
+//
+// @private
+//
+// @param $map {map}    The Map
+// @param $key {string} The map path
+//
+// @return     {bool}   True if the map path has a value,
+//                            otherwise false
+@function config-map-has($map, $key) {
+  $keys: str-split($key, $config-delimiter);
+  $value: $map;
+
+  @each $key in $keys {
+    @if type-of($value) != 'map' or not map-has-key($value, $key) {
+      @return false;
+    }
+
+    $value: map-get($value, $key);
+  }
+
+  @return true;
+}
+
+// Gets a value from a Map by the map path
+//
+// @function config-map-get
+//
+// @private
+//
+// @param $map  {map}    The Map
+// @param $path {string} The map path
+//
+// @return      {*}      The value of the map path
+@function config-map-get($map, $path) {
+  $keys: str-split($path, $config-delimiter);
+  $value: $map;
+
+  @each $key in $keys {
+    @if type-of($value) != 'map' or not map-has-key($value, $key) {
+      @warn 'The path "#{$path}" doesn\'t exist.';
+
+      @return null;
+    }
+
+    $value: map-get($value, $key);
+  }
+
+  @return $value;
+}
+
+// Sets a value to a Map by the map path
+//
+// @function config-map-set
+//
+// @private
+//
+// @param $map   {map}    The Map
+// @param $path  {string} The map path
+// @param $value {*|null} The value to set
+//
+// @return       {map}    A new Map
+@function config-map-set($map, $path, $value) {
+  $keys: str-split($path, $config-delimiter);
+  $length: length($keys);
+
+  $result: (nth($keys, $length): $value);
+
+  @for $i from 1 through $length - 1 {
+    $path: '';
+    $key: nth($keys, 1);
+
+    @if $length > 1 {
+      $j: $length - $i;
+      $key: nth($keys, $j);
+
+      $path: str-join(list-slice($keys, 1, $j), $config-delimiter);
+    }
+
+    @if config-map-has($map, $path) {
+      $value: config-map-get($map, $path);
+
+      @if type-of($value) == 'map' {
+        $result: config-map-merge(($key: $value), ($key: $result));
+      } @else {
+        $result: ($key: $result);
+      }
+    } @else {
+      $result: ($key: $result);
+    }
+  }
+
+  $map: config-map-merge($map, $result);
+
+  @return $map;
 }
 
 // Recursively merges one or more maps
@@ -95,10 +194,10 @@
 //
 // @private
 //
-// @param  $maps {map} The map(s) to merge
+// @param  $maps {map...} The map(s) to merge
 //
-// @return       {map} The merged map
-@function config-map-merge($maps) {
+// @return       {map}    The merged map
+@function config-map-merge($maps...) {
   $result: nth($maps, 1);
 
   @for $i from 1 through length($maps) - 1 {

@@ -2,13 +2,15 @@
 //sass_import config
 
 module.exports = {
-    options: {
-        basePath: 'src/scss/'
+    dev: {
+        options: {
+            basePath: ''
+        },
+        files: {
+            'tests/specs/include.scss': [
+                'src/scss/utils/*',
+                'tests/specs/scss/*'
+            ]
+        }
     },
-    files: {
-        'config-manager.scss': [
-            'base/*',
-            'utils/*'
-        ]
-    }
 };
