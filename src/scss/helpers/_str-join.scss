@@ -1,0 +1,27 @@
+// Joins list elements with a string
+//
+// @function str-join
+//
+// @access private
+//
+// @param $list {list}   The list to join
+// @param $glue {string} The glue string to join list elements
+//
+// @return      {string} The joined string
+@function str-join($list, $glue: '') {
+  $result: '';
+
+  @if length($list) == 0 {
+    @return $result;
+  }
+
+  @if length($list) > 1 {
+    @for $i from 1 through length($list) - 1 {
+      $result: $result + nth($list, $i) + $glue;
+    }
+  }
+
+  $result: $result + nth($list, length($list));
+
+  @return $result;
+}

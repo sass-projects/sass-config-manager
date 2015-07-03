@@ -1,0 +1,25 @@
+// Returns whether the key of a map path exists in a Map
+//
+// @function config-map-has
+//
+// @access private
+//
+// @param $map {map...} The Map
+// @param $key {string} The map path
+//
+// @return     {bool}   True if the map path has a value,
+//                            otherwise false
+@function config-map-has($map, $key) {
+  $keys: str-split($key, $config-delimiter);
+  $value: $map;
+
+  @each $key in $keys {
+    @if type-of($value) != 'map' or not map-has-key($value, $key) {
+      @return false;
+    }
+
+    $value: map-get($value, $key);
+  }
+
+  @return true;
+}

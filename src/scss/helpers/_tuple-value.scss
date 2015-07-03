@@ -1,0 +1,17 @@
+// Return the value (second value) from a two-item map
+//
+// @function tuple-value
+//
+// @access private
+//
+// @param {map...} $tuple - Tuple
+//
+// @return {* | Null} - Value from `$tuple` or `null`
+@function tuple-value($tuple) {
+  @if length($tuple) < 2 {
+    @return null;
+  }
+
+  // @return nth($tuple, 2);
+  @return slice($tuple, 2, length($tuple));
+}

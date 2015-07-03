@@ -2,11 +2,19 @@
 @include test-module('Functions') {
 
   // Testing set functions
-  @include test('config-set [function] Set single key.') {
+  @include test('config-set [function] Set a single key.') {
     @include config-set('single', 'foo');
 
     $expect: ("single": "foo");
     @include assert-equal($config-attr, $expect, 'Check if map is correct.');
+  }
+
+  // Testing set functions
+  @include test('config-set [function] Set a single !default key.') {
+    @include config-set('single-default', 'foo', true);
+
+    $expect: ("single-default": "foo");
+    @include assert-equal($config-default, $expect, 'Check if map is correct.');
   }
 
   // Testing set functions

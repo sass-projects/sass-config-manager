@@ -1,0 +1,20 @@
+// Extracts a slice of a list
+//
+// @function list-slice
+//
+// @access private
+//
+// @param  $list  {list}   The list to extract
+// @param  $start {number} The start index to extract
+// @param  $end   {number} The end index to extract
+//
+// @return        {list}   The extracted list
+@function list-slice($list, $start: 1, $end: length($list)) {
+  $output: ();
+
+  @for $i from $start through $end {
+    $output: append($output, nth($list, $i));
+  }
+
+  @return $output;
+}
