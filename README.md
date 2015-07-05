@@ -42,6 +42,52 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 grunt test
 ~~~
 
+## How to
+
+### Usage
+Include this library. If you use bower ``@import 'bower_components/sass-config-manager/src/scss/config-manager';`` or ``@import 'node_modules/sass-config-manager/src/scss/config-manager';``
+
+### Set default settings
+~~~scss
+// Default configuration settings
+// Passing true to the 3rd parameter,
+// the value is assigned to the configuration path as the default
+@include config-set('color.black', #000, true);
+@include config-set('color.white', #fff, true);
+@include config-set('single-key', red, true);
+
+// or assign values to a configuration path by using Map
+@include config-set('color', (black: #000, white: #fff), true);
+~~~
+
+### Get your settings
+~~~scss
+body {
+    color: config-get('color.black');  // #000
+    background-color: config-get('color.white');  // #fff
+}
+~~~
+
+### Compatibility
+~~~scss
+// Variables
+$color-black: #000 !default;
+$color-white-bg: #fff !default;
+
+$color: (
+    fg: $color-black,
+    bg: $color-white-bg
+) !default;
+
+// config-set()
+@include config-set('color', $color, true);
+
+body {
+    color: config-get('color.fg');  // #666666
+    background-color: config-get('color.bg');  // white
+}
+~~~
+
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
