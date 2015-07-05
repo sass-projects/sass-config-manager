@@ -3,8 +3,9 @@
 [![Author](http://img.shields.io/badge/author-@@anolilab-blue.svg?style=flat-square)](https://twitter.com/@anolilab)
 [![npm](https://img.shields.io/npm/v/sass-config-manager.svg?style=flat-square)](https://www.npmjs.com/package/sass-config-manager)
 [![devDependency Status](https://david-dm.org/growcss/sass-config-manager/dev-status.svg?style=flat-square)](https://david-dm.org/growcss/sass-config-manager#info=devDependencies)
-[![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/sass-config-manager)
-[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg?style=flat-square)](https://github.com/growcss/sass-config-manager/releases)
+[![npm](https://img.shields.io/npm/v/growcss-sass-config-manager.svg?style=flat-square)](https://www.npmjs.com/package/growcss-sass-config-manager)
+[![Bower](https://img.shields.io/bower/v/sass-config-manager.svg?style=flat-square)](https://github.com/growcss/sass-config-manager)
+g[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg?style=flat-square)](https://github.com/growcss/sass-config-manager/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
 ## Master
@@ -45,7 +46,7 @@ grunt test
 ## How to
 
 ### Usage
-Include this library. If you use bower ``@import 'bower_components/sass-config-manager/src/scss/config-manager';`` or ``@import 'node_modules/sass-config-manager/src/scss/config-manager';``
+Include this library. If you use bower ``@import 'bower_components/sass-config-manager/src/scss/config-manager';`` or ``@import 'node_modules/growcss-sass-config-manager/src/scss/config-manager';``
 
 ### Set default settings
 ~~~scss

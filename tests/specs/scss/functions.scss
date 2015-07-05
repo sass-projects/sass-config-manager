@@ -30,6 +30,34 @@
     @include assert-equal($config, $expect, "Check if map is correct.");
   }
 
+  // Testing set functions
+  @include test("config-set [function] Set a map as vlaue.") {
+    @include config-set("map", ("bar": "foo", "foo": "bar"));
+
+    $expect: ("bar": "foo", "foo": "bar");
+    $config: config-get("map");
+
+    @include assert-equal($config, $expect, "Check if map is correct.");
+  }
+
+  // Testing set functions
+  @include test("config-set [function] Set a map variable as vlaue.") {
+    $color-black: #000 !default;
+    $color-white-bg: #fff !default;
+
+    $color: (
+        fg: $color-black,
+        bg: $color-white-bg
+    ) !default;
+
+    @include config-set("map-variable", $color);
+
+    $expect: (fg: #000, bg: #fff);
+    $config: config-get("map-variable");
+
+    @include assert-equal($config, $expect, "Check if map is correct.");
+  }
+
   // Testing get functions
   @include test("config-get [function] Get a value from key.") {
     @include config-set("test.color", #000);
