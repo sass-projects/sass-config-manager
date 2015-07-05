@@ -1,0 +1,11 @@
+{
+  "name": "growcss-sass-config-manager",
+  "description": "A dot-syntax configuration (Map) library for Sass (mixin / function).",
+  "tags": [
+    "config",
+    "settings",
+    "manager",
+    "map",
+    "library"
+  ]
+}

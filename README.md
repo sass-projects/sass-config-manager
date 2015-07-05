@@ -2,7 +2,7 @@
 
 [![Author](http://img.shields.io/badge/author-@@anolilab-blue.svg?style=flat-square)](https://twitter.com/@anolilab)
 [![npm](https://img.shields.io/npm/v/sass-config-manager.svg?style=flat-square)](https://www.npmjs.com/package/sass-config-manager)
-[![David](https://img.shields.io/david/growcss/sass-config-manager.svg?style=flat-square)](https://david-dm.org/growcss/sass-config-manager#info=dependencies&view=table)
+[![devDependency Status](https://david-dm.org/growcss/sass-config-manager/dev-status.svg?style=flat-square)](https://david-dm.org/growcss/sass-config-manager#info=devDependencies)
 [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/sass-config-manager)
 [![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg?style=flat-square)](https://github.com/growcss/sass-config-manager/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
@@ -40,6 +40,52 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 ~~~
 grunt test
+~~~
+
+## How to
+
+### Usage
+Include this library. If you use bower ``@import 'bower_components/sass-config-manager/src/scss/config-manager';`` or ``@import 'node_modules/sass-config-manager/src/scss/config-manager';``
+
+### Set default settings
+~~~scss
+// Default configuration settings
+// Passing true to the 3rd parameter,
+// the value is assigned to the configuration path as the default
+@include config-set('color.black', #000, true);
+@include config-set('color.white', #fff, true);
+@include config-set('single-key', red, true);
+
+// or assign values to a configuration path by using Map
+@include config-set('color', (black: #000, white: #fff), true);
+~~~
+
+### Get your settings
+~~~scss
+body {
+    color: config-get('color.black');  // #000
+    background-color: config-get('color.white');  // #fff
+}
+~~~
+
+### Compatibility
+~~~scss
+// Variables
+$color-black: #000 !default;
+$color-white-bg: #fff !default;
+
+$color: (
+    fg: $color-black,
+    bg: $color-white-bg
+) !default;
+
+// config-set()
+@include config-set('color', $color, true);
+
+body {
+    color: config-get('color.fg');  // #666666
+    background-color: config-get('color.bg');  // white
+}
 ~~~
 
 ## Contributing

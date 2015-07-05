@@ -1,0 +1,25 @@
+// Gets a value to/from a configuration path
+//
+// @function config-get
+//
+// @param $key     {string} The configuration path
+// @param $default {bool}   Whether the configuration is default
+//
+// @return         {*}      The value of the configuration path
+@function config-get($key, $default: false) {
+  @if $default {
+    @if config-map-has($config-default, $key) {
+      @return config-map-get($config-default, $key);
+    }
+  } @else {
+    @if config-map-has($config-attr, $key) {
+      @return config-map-get($config-attr, $key);
+    } @else if config-map-has($config-default, $key) {
+      @return config-map-get($config-default, $key);
+    }
+  }
+
+  @warn "The key '#{$key}' doesn\'t exist.";
+
+  @return null;
+}

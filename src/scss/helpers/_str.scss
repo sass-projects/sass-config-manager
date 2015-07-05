@@ -1,0 +1,66 @@
+// Joins list elements with a string
+//
+// @function str-join
+//
+// @access private
+//
+// @param $list {list}   The list to join
+// @param $glue {string} The glue string to join list elements
+//
+// @return      {string} The joined string
+@function str-join($list, $glue: "") {
+  $result: "";
+
+  @if length($list) == 0 {
+    @return $result;
+  }
+
+  @if length($list) > 1 {
+    @for $i from 1 through length($list) - 1 {
+      $result: $result + nth($list, $i) + $glue;
+    }
+  }
+
+  $result: $result + nth($list, length($list));
+
+  @return $result;
+}
+
+// Splits a string by a delimiter
+//
+// @function str-split
+//
+// @access private
+//
+// @param $string    {string} The string to split
+// @param $delimiter {string} The boundary string to split the string
+//
+// @return           {list}   The splitted list
+@function str-split($string, $delimiter: "") {
+  $result: ();
+  $length: str-length($string);
+
+  @if str-length($delimiter) == 0 {
+    @for $i from 1 through $length {
+      $result: append($result, str-slice($string, $i, $i));
+    }
+
+    @return $result;
+  }
+
+  $break: false;
+
+  @while not $break {
+    $index: str-index($string, $delimiter);
+
+    @if not $index or $index == 0 {
+      $break: true;
+    } @else {
+      $part: if($index != 1, str-slice($string, 1, $index - 1), "");
+      $result: append($result, $part);
+      $string: str-slice($string, $index + str-length($delimiter));
+    }
+  }
+
+  @return append($result, $string);
+}

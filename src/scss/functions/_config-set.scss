@@ -1,0 +1,22 @@
+// Sets a value to/from a configuration path
+//
+// @function config
+//
+// @param $key     {string} The configuration key
+// @param $value   {*}      The value to set
+// @param $default {bool}   Whether the configuration is default
+//
+// @return         {*}      The value of the configuration path
+@function config-set($key, $value, $default: false) {
+  @if $default {
+    @if config-map-has($config-default, $key) {
+      $value: config-map-get($config-default, $key);
+    } @else {
+      $config-default: config-map-set($config-default, $key, $value) !global;
+    }
+  } @else {
+    $config-attr: config-map-set($config-attr, $key, $value) !global;
+  }
+
+  @return $value;
+}
