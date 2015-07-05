@@ -7,7 +7,7 @@
     "email": "d.bannert@anolilab.de"
   },
   "homepage": "http://growcss.com/",
-  "main": "library.js",
+  "main": "./sass-config-manager/src/scss/config-manager.scss",
   "repository": {
     "type": "git",
     "url": "https://github.com/growcss/sass-config-manager.git"
