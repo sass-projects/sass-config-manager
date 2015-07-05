@@ -3,9 +3,11 @@
 
   // Testing set functions
   @include test('config-set [function] Set a single key.') {
-    @include config-set('single', 'foo');
+    @include config-set('bar', 'foo');
+    @include config-set('color', #fff);
 
-    $expect: ("single": "foo");
+    $expect: ("bar": "foo", "color": #fff);
+
     @include assert-equal($config-attr, $expect, 'Check if map is correct.');
   }
 
@@ -22,21 +24,11 @@
     @include config-set('test.bar', 'foo');
     @include config-set('test.color', #fff);
 
-    $expect: ("test": ("bar": 'foo', "color": #fff));
-    @include assert-equal($config-attr, $expect, 'Check if map is correct.');
+    $expect: ("bar": 'foo', "color": #fff);
+    $config: config-get('test');
+
+    @include assert-equal($config, $expect, 'Check if map is correct.');
   }
-
-  // Testing set functions
-  // @include test('config-bind [function] Set a list of values to a key.') {
-  //   $list: ("config", "sass", "manager", "growcss");
-
-  //   @include config-bind('list', $list);
-
-  //   $expect: ("list": ("config", 'sass', "manager", "growcss"));
-  //   @include assert-equal($config-attr, $expect, 'Check if map is correct.');
-
-  //   $config-attr: ();
-  // }
 
   // Testing get functions
   @include test('config-get [function] Get a value from key.') {
@@ -64,5 +56,18 @@
     $expect: null;
 
     @include assert-equal($get, $expect, 'Returns null.');
+  }
+
+  // Testing get functions
+  @include test('config-has [function] Get true if a key exist and false if not.') {
+    $get: config-has('test');
+    $expect: true;
+
+    @include assert-equal($get, $expect, 'Returns true.');
+
+    $get: config-has('test-not-found');
+    $expect: false;
+
+    @include assert-equal($get, $expect, 'Returns true.');
   }
 }
