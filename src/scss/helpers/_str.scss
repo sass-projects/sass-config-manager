@@ -8,8 +8,8 @@
 // @param $glue {string} The glue string to join list elements
 //
 // @return      {string} The joined string
-@function str-join($list, $glue: '') {
-  $result: '';
+@function str-join($list, $glue: "") {
+  $result: "";
 
   @if length($list) == 0 {
     @return $result;
@@ -36,7 +36,7 @@
 // @param $delimiter {string} The boundary string to split the string
 //
 // @return           {list}   The splitted list
-@function str-split($string, $delimiter: '') {
+@function str-split($string, $delimiter: "") {
   $result: ();
   $length: str-length($string);
 
@@ -56,7 +56,7 @@
     @if not $index or $index == 0 {
       $break: true;
     } @else {
-      $part: if($index != 1, str-slice($string, 1, $index - 1), '');
+      $part: if($index != 1, str-slice($string, 1, $index - 1), "");
       $result: append($result, $part);
       $string: str-slice($string, $index + str-length($delimiter));
     }

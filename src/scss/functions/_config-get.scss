@@ -19,7 +19,7 @@
     }
   }
 
-  @warn 'The key "#{$key}" doesn\'t exist.';
+  @warn "The key '#{$key}' doesn\'t exist.";
 
   @return null;
 }

@@ -18,7 +18,7 @@
 
   @if $length > 1 {
     @for $i from 1 through $length - 1 {
-      $path: '';
+      $path: "";
       $key: nth($keys, 1);
 
       $j: $length - $i;
@@ -29,7 +29,7 @@
       @if config-map-has($map, $path) {
         $value: config-map-get($map, $path);
 
-        @if type-of($value) == 'map' {
+        @if type-of($value) == "map" {
           $result: config-map-merge(($key: $value), ($key: $result));
         } @else {
           $result: ($key: $result);
@@ -60,8 +60,8 @@
   $value: list-map-check($map);
 
   @each $key in $keys {
-    @if type-of($value) != 'map' or not map-has-key($value, $key) {
-      @warn 'The path "#{$path}" doesn\'t exist.';
+    @if type-of($value) != "map" or not map-has-key($value, $key) {
+      @warn "The path '#{$path}' doesn\'t exist.";
 
       @return null;
     }
@@ -88,7 +88,7 @@
   $value: list-map-check($map);
 
   @each $key in $keys {
-    @if type-of($value) != 'map' or not map-has-key($value, $key) {
+    @if type-of($value) != "map" or not map-has-key($value, $key) {
       @return false;
     }
 
@@ -112,11 +112,11 @@
 
   @for $i from 1 through length($maps) - 1 {
     @each $key, $value in nth($maps, $i + 1) {
-      @if type-of($result) != 'map' {
+      @if type-of($result) != "map" {
         $result: ($key: $value);
       }
 
-      @if type-of($value) == 'map' {
+      @if type-of($value) == "map" {
         $value: config-map-merge(map-get($result, $key), $value);
       }
 
