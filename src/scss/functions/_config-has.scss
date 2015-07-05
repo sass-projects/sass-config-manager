@@ -1,0 +1,15 @@
+// Returns whether a configuration path exists
+//
+// @function config-has
+//
+// @param $key {string} The configuration path
+//
+// @return     {bool}   True if the configuration path has a value,
+//                           otherwise false
+@function config-has($key) {
+  @if config-map-has($config-attr, $key) or config-map-has($config-default, $key) {
+    @return true;
+  }
+
+  @return false;
+}

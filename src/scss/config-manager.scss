@@ -1,5 +1,8 @@
 // Here are all the functions, helpers, mixins and variables.
 @import 'utils/variables';
-@import 'utils/helpers';
-@import 'utils/functions';
+
+@import 'helpers/helpers';
+
+@import 'functions/functions';
+
 @import 'utils/mixins';
