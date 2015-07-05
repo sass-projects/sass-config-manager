@@ -9,7 +9,7 @@
 // @return      {list-map}
 @function list-map-check($list) {
   @if length($list) == 2 and length(nth($list, 1)) == 1 {
-    @return append((), $list, 'comma');
+    @return append((), $list, "comma");
   }
 
   @return $list;
