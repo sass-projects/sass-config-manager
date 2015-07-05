@@ -1,6 +1,6 @@
 {
   "name": "growcss-sass-config-manager",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "homepage": "http://growcss.com/",
   "authors": [
     "Daniel Bannert <d.bannert@anolilab.de>"
@@ -12,7 +12,16 @@
   ],
   "keywords": [
     "grunt",
-    "bower"
+    "bower",
+    "sass",
+    "scss",
+    "development",
+    "dev",
+    "config",
+    "settings",
+    "manager",
+    "map",
+    "library"
   ],
   "license": "MIT",
   "main": [

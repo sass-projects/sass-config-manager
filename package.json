@@ -1,6 +1,6 @@
 {
   "name": "growcss-sass-config-manager",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A dot-syntax configuration (Map) library for Sass (mixin / function).",
   "author": {
     "name": "Daniel Bannert",
@@ -35,7 +35,7 @@
     "grunt-bump": "^0.3.1",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-mocha-cli": "^1.13.0",
+    "grunt-mocha-cli": "^1.13.1",
     "grunt-newer": "^1.1.1",
     "grunt-sass-import": "^0.1.0",
     "grunt-scss-lint": "^0.3.6",
@@ -50,13 +50,14 @@
   "keywords": [
     "grunt",
     "bower",
-    "bin",
-    "front-end",
+    "sass",
+    "scss",
     "development",
     "dev",
-    "build",
-    "generator",
-    "generate",
-    "tool"
+    "config",
+    "settings",
+    "manager",
+    "map",
+    "library"
   ]
 }
