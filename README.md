@@ -45,7 +45,7 @@ grunt test
 ## How to
 
 ### Usage
-Include this library. If you use bower ``@import 'bower_components/sass-config-manager/src/scss/config-manager';`` or ``@import 'node_modules/sass-config-manager/src/scss/config-manager';``
+Include this library. If you use bower ``@import 'bower_components/sass-config-manager/src/scss/config-manager';`` or ``@import 'node_modules/growcss-sass-config-manager/src/scss/config-manager';``
 
 ### Set default settings
 ~~~scss

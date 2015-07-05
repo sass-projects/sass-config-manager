@@ -2,6 +2,12 @@
 
 All Notable changes to `sass-config-manager` will be documented in this file
 
+## 2.0.5 Release
+
+### Added
+- new test.
+- fix path for npm.
+
 ## 2.0.4 Release
 
 ### Added
