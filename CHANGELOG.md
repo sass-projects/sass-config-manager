@@ -7,6 +7,8 @@ All Notable changes to `sass-config-manager` will be documented in this file
 ### Added
 - new test.
 - fix path for npm.
+- fix npm link.
+- bower package version.
 
 ## 2.0.4 Release
 
@@ -27,12 +29,12 @@ All Notable changes to `sass-config-manager` will be documented in this file
 ## 2.0.1 Release
 
 ### Fixed
-- cs-fixes
+- cs-fixes.
 
 ## 2.0.0 Release
 
 ### Added
-- added tests for config-set(), config-get(), config-has()
+- added tests for config-set(), config-get(), config-has().
 
 ### Deprecated
 - Nothing
@@ -42,8 +44,8 @@ All Notable changes to `sass-config-manager` will be documented in this file
 - some bugs in config-set() if a single key was added.
 
 ### Removed
-- config-bind()
-- config-remove()
+- config-bind().
+- config-remove().
 
 ### Security
 - Nothing
