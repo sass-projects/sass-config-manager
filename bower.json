@@ -12,7 +12,16 @@
   ],
   "keywords": [
     "grunt",
-    "bower"
+    "bower",
+    "sass",
+    "scss",
+    "development",
+    "dev",
+    "config",
+    "settings",
+    "manager",
+    "map",
+    "library"
   ],
   "license": "MIT",
   "main": [
