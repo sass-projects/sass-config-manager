@@ -21,11 +21,7 @@
   "bugs": {
     "url": "https://github.com/growcss/sass-config-manager/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ],
+  "license": "MIT",
   "engines": {
     "node": ">= 0.10.0"
   },
