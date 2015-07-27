@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 // Sass Mixins
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -5,9 +7,21 @@
 //
 // @mixin config-set
 //
-// @param $key    {string} The configuration key
+// @param $key     {string} The configuration key
 // @param $value   {*|null} The value to set
 // @param $default {bool}   Whether the configuration is default
 @mixin config-set($key, $value, $default: false) {
   $config: config-set($key, $value, $default);
+}
+
+// Remove settings
+//
+// @mixin config-reset
+//
+// @param $settings {string} Configuration path
+// @param $default  {bool}   Whether the configuration is default
+//
+// @return          {bool}   True if the configuration path is removed.
+@mixin config-reset($settings, $default:false) {
+  $config-reset: config-reset($settings);
 }
