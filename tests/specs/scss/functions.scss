@@ -74,8 +74,6 @@
     $expect: ("bar": "foo", "color": #000);
 
     @include assert-equal($get, $expect, "Returns test map.");
-
-    $config-attr: ();
   }
 
   // Testing get functions
@@ -96,6 +94,19 @@
     $get: config-has("test-not-found");
     $expect: false;
 
-    @include assert-equal($get, $expect, "Returns true.");
+    @include assert-equal($get, $expect, "Returns false.");
+  }
+
+  // Testing set functions
+  @include test("config-reset [function] Remove config map.") {
+    @include config-set("remove.bar", "foo");
+    @include config-set("remove.color", #fff);
+
+    @include config-reset("remove");
+
+    $expect: null;
+    $get: config-get("remove");
+
+    @include assert-equal($get, $expect, "Check if config map is removed.");
   }
 }

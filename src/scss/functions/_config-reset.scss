@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+// Remove settings
+//
+// @function config-reset
+//
+// @param $settings {string} Configuration path
+// @param $default  {bool}   Whether the configuration is default
+//
+// @return          {bool}   True if the configuration path is removed.
+@function config-reset($settings, $default: false) {
+  @if length($settings) == 1 {
+    $settings: nth($settings, 1);
+  }
+
+  @each $setting in $settings {
+    @if ($default) {
+      $config-default: map-remove($config-default, $setting) !global;
+    } @else {
+      $config-attr: map-remove($config-attr, $setting) !global;
+    }
+  }
+
+  @return true;
+}
