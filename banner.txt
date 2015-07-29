@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+//      A dot-syntax configuration (Map) library in Sass
+//
+//                http://growcss.de
+//
+//         Authors: Daniel Bannert (@anolilab)
+//
+//      This project is licensed under the terms of the MIT license
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+

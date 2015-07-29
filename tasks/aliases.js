@@ -5,6 +5,7 @@ module.exports = {
         'mochacli'
     ],
     'default': [
-        'test'
+        'test',
+        'concat'
     ]
 };
