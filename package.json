@@ -1,13 +1,13 @@
 {
   "name": "growcss-sass-config-manager",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "A dot-syntax configuration (Map) library for Sass (mixin / function).",
   "author": {
     "name": "Daniel Bannert",
     "email": "d.bannert@anolilab.de"
   },
   "homepage": "http://growcss.com/",
-  "main": "./sass-config-manager/src/scss/config-manager.scss",
+  "main": "./dist/config-manager.scss",
   "repository": {
     "type": "git",
     "url": "https://github.com/growcss/sass-config-manager.git"
@@ -16,7 +16,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "grunt test --verbose"
+    "test": "grunt test"
   },
   "bugs": {
     "url": "https://github.com/growcss/sass-config-manager/issues"
