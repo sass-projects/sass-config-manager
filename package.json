@@ -34,7 +34,6 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-mocha-cli": "^1.13.1",
     "grunt-newer": "^1.1.1",
-    "grunt-sass-import": "^0.1.0",
     "grunt-scss-lint": "^0.3.6",
     "load-grunt-config": "^0.17.2",
     "load-grunt-tasks": "^3.2.0",
