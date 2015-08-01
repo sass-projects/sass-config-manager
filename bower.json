@@ -1,6 +1,6 @@
 {
   "name": "growcss-sass-config-manager",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "homepage": "http://growcss.com/",
   "authors": [
     "Daniel Bannert <d.bannert@anolilab.de>"
@@ -25,7 +25,7 @@
   ],
   "license": "MIT",
   "main": [
-    "./src/scss/config-manager.scss"
+    "./dist/config-manager.scss"
   ],
   "ignore": [
     "**/.*",
