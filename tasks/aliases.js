@@ -2,10 +2,11 @@
 module.exports = {
     'test' : [
         'scsslint',
+        'concat:test',
         'mochacli'
     ],
     'default': [
         'test',
-        'concat'
+        'concat:dist'
     ]
 };
