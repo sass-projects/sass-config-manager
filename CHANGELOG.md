@@ -2,6 +2,26 @@
 
 All Notable changes to `sass-config-manager` will be documented in this file
 
+## 3.0.0 Release
+
+### Added
+- Added a namespace variable to namespace config names.
+
+## 2.1.0 Release
+
+### Added
+- Added mixin for config-get
+
+## 2.0.8 Release
+
+### Added
+- Added concat to build config manager
+
+## 2.0.7 Release
+
+### Added
+- Added config-reset function
+
 ## 2.0.5 Release
 
 ### Added
