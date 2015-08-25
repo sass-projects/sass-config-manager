@@ -1,13 +1,11 @@
 @charset "UTF-8";
 
-// Remove settings
-//
-// @function config-reset
-//
-// @param $settings {string} Configuration path
-// @param $default  {bool}   Whether the configuration is default
-//
-// @return          {bool}   True if the configuration path is removed.
+/// Remove settings
+///
+/// @param  {String} $settings Configuration path
+/// @param  {Bool}   $default  Whether the configuration is default
+///
+/// @return {Bool}             True if the configuration path is removed.
 @function config-reset($settings, $default: false) {
   $settings: $config-namespace + $settings;
 

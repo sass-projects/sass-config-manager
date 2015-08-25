@@ -1,14 +1,12 @@
 @charset "UTF-8";
 
-// Return list-map from `$list` and ensure input list-map is list-of-lists
-//
-// @function list-map-check
-//
-// @access public
-//
-// @param $list {list}
-//
-// @return      {list-map}
+/// Return list-map from `$list` and ensure input list-map is list-of-lists
+///
+/// @access public
+///
+/// @param  {List} $list
+///
+/// @return {List}
 @function list-map-check($list) {
   @if length($list) == 2 and length(nth($list, 1)) == 1 {
     @return append((), $list, "comma");
@@ -17,17 +15,15 @@
   @return $list;
 }
 
-// Extracts a slice of a list
-//
-// @function list-slice
-//
-// @access private
-//
-// @param  $list  {list}   The list to extract
-// @param  $start {number} The start index to extract
-// @param  $end   {number} The end index to extract
-//
-// @return        {list}   The extracted list
+/// Extracts a slice of a list
+///
+/// @access private
+///
+/// @param  {List}   $list  The list to extract
+/// @param  {Number} $start The start index to extract
+/// @param  {Number} $end   The end index to extract
+///
+/// @return {List}          The extracted list
 @function list-slice($list, $start: 1, $end: length($list)) {
   $output: ();
 

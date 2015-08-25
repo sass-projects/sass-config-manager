@@ -1,13 +1,10 @@
 @charset "UTF-8";
 
-// Returns whether a configuration path exists
-//
-// @function config-has
-//
-// @param $key {string} The configuration path
-//
-// @return     {bool}   True if the configuration path has a value,
-//                           otherwise false
+/// Returns whether a configuration path exists
+///
+/// @param  {String} $key The configuration path
+///
+/// @return {Bool}        True if the configuration path has a value, otherwise false
 @function config-has($key) {
   $key: $config-namespace + $key;
 

@@ -7,6 +7,7 @@ module.exports = {
     ],
     'default': [
         'test',
-        'concat:dist'
+        'concat:dist',
+        'sassdoc'
     ]
 };
