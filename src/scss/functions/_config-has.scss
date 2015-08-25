@@ -9,6 +9,8 @@
 // @return     {bool}   True if the configuration path has a value,
 //                           otherwise false
 @function config-has($key) {
+  $key: $config-namespace + $key;
+
   @if config-map-has($config-attr, $key) or config-map-has($config-default, $key) {
     @return true;
   }

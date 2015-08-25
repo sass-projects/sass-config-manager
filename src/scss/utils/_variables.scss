@@ -17,3 +17,8 @@ $config-attr: () !default;
 //
 // @private
 $config-default: () !default;
+
+// Namespace for settings
+//
+// @public
+$config-namespace: "" !default;

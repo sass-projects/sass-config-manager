@@ -65,8 +65,11 @@ $config-attr: () !default;
 // @private
 $config-default: () !default;
 
-// Here are all the helpers.
-// - - - - - - - - - - - - - - - - - - - - - - - - -
+// Namespace for settings
+//
+// @public
+$config-namespace: "" !default;
+
 // Return list-map from `$list` and ensure input list-map is list-of-lists
 //
 // @function list-map-check
@@ -314,6 +317,8 @@ $config-default: () !default;
 //
 // @return         {*}      The value of the configuration path
 @function config-get($key, $default: false) {
+  $key: $config-namespace + $key;
+
   @if $default {
     @if config-map-has($config-default, $key) {
       @return config-map-get($config-default, $key);
@@ -340,6 +345,8 @@ $config-default: () !default;
 // @return     {bool}   True if the configuration path has a value,
 //                           otherwise false
 @function config-has($key) {
+  $key: $config-namespace + $key;
+
   @if config-map-has($config-attr, $key) or config-map-has($config-default, $key) {
     @return true;
   }
@@ -356,6 +363,8 @@ $config-default: () !default;
 //
 // @return          {bool}   True if the configuration path is removed.
 @function config-reset($settings, $default: false) {
+  $settings: $config-namespace + $settings;
+
   @if length($settings) == 1 {
     $settings: nth($settings, 1);
   }
@@ -381,6 +390,8 @@ $config-default: () !default;
 //
 // @return         {*}      The value of the configuration path
 @function config-set($key, $value, $default: false) {
+  $key: $config-namespace + $key;
+
   @if $default {
     @if config-map-has($config-default, $key) {
       $value: config-map-get($config-default, $key);
@@ -393,6 +404,3 @@ $config-default: () !default;
 
   @return $value;
 }
-
-// Here are all the functions.
-// - - - - - - - - - - - - - - - - - - - - - - - - -
