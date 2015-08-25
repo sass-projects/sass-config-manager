@@ -1,16 +1,14 @@
 @charset "UTF-8";
 
-// Sets a value to a Map by the map path
-//
-// @function config-map-set
-//
-// @access private
-//
-// @param $map   {map}    The Map
-// @param $path  {string} The map path
-// @param $value {*|null} The value to set
-//
-// @return       {map...} A new Map
+/// Sets a value to a Map by the map path
+///
+/// @access private
+///
+/// @param  {Map}    $map   The Map
+/// @param  {String} $path  The map path
+/// @param  {*|Null} $value The value to set
+///
+/// @return {Map}           A new Map
 @function config-map-set($map, $path, $value) {
   $map: list-map-check($map);
   $keys: str-split($path, $config-delimiter);
@@ -47,16 +45,14 @@
   @return $map;
 }
 
-// Gets a value from a Map by the map path
-//
-// @function config-map-get
-//
-// @access private
-//
-// @param $map  {map...} The Map
-// @param $path {string} The map path
-//
-// @return      {*}      The value of the map path
+/// Gets a value from a Map by the map path
+///
+/// @access private
+///
+/// @param  {Map}    $map  The Map
+/// @param  {String} $path The map path
+///
+/// @return {*}            The value of the map path
 @function config-map-get($map, $path) {
   $keys: str-split($path, $config-delimiter);
   $value: list-map-check($map);
@@ -74,17 +70,14 @@
   @return $value;
 }
 
-// Returns whether the key of a map path exists in a Map
-//
-// @function config-map-has
-//
-// @access private
-//
-// @param $map {map...} The Map
-// @param $key {string} The map path
-//
-// @return     {bool}   True if the map path has a value,
-//                            otherwise false
+/// Returns whether the key of a map path exists in a Map
+///
+/// @access private
+///
+/// @param  {Map}    $map The Map
+/// @param  {String} $key The map path
+///
+/// @return {Bool}       True if the map path has a value, otherwise false
 @function config-map-has($map, $key) {
   $keys: str-split($key, $config-delimiter);
   $value: list-map-check($map);
@@ -100,15 +93,13 @@
   @return true;
 }
 
-// Recursively merges one or more maps
-//
-// @function config-map-merge
-//
-// @access private
-//
-// @param $maps {map...} The map(s) to merge
-//
-// @return      {map}    The merged map
+/// Recursively merges one or more maps
+///
+/// @access private
+///
+/// @param  {Map} $maps... The map(s) to merge
+///
+/// @return {Map}          The merged map
 @function config-map-merge($maps...) {
   $result: nth($maps, 1);
 

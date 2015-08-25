@@ -1,24 +1,21 @@
 @charset "UTF-8";
 
-// Sass Variables
-// - - - - - - - - - - - - - - - - - - - - - - - - -
-
-// The delimiter of configuration path
-//
-// @private
+/// The delimiter of configuration path
+///
+/// @access private
 $config-delimiter: "." !default;
 
-// The configuration storage
-//
-// @private
+/// The configuration storage
+///
+/// @access private
 $config-attr: () !default;
 
-// The default configuration storage
-//
-// @private
+/// The default configuration storage
+///
+/// @access private
 $config-default: () !default;
 
-// Namespace for settings
-//
-// @public
+/// Namespace for settings
+///
+/// @access public
 $config-namespace: "" !default;

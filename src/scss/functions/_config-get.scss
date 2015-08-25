@@ -1,13 +1,11 @@
 @charset "UTF-8";
 
-// Gets a value to/from a configuration path
-//
-// @function config-get
-//
-// @param $key     {string} The configuration path
-// @param $default {bool}   Whether the configuration is default
-//
-// @return         {*}      The value of the configuration path
+/// Gets a value to/from a configuration path
+///
+/// @param {String} $key      The configuration path
+/// @param {Bool}   $default  Whether the configuration is default
+///
+/// @return         {*}       The value of the configuration path
 @function config-get($key, $default: false) {
   @if $default {
     @if config-map-has($config-default, $key) {

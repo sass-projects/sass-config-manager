@@ -9,76 +9,58 @@
 //      This project is licensed under the terms of the MIT license
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// Sass Mixins
-// - - - - - - - - - - - - - - - - - - - - - - - - -
-
-// Sets a value to a configuration path
-//
-// @mixin config-set
-//
-// @param $key     {string} The configuration key
-// @param $value   {*|null} The value to set
-// @param $default {bool}   Whether the configuration is default
+/// Sets a value to a configuration path
+///
+/// @param {String} $key     The configuration key
+/// @param {*|Null} $value   The value to set
+/// @param {Bool}   $default Whether the configuration is default
 @mixin config-set($key, $value, $default: false) {
   $config: config-set($key, $value, $default);
 }
 
-// Gets a value to/from a configuration path
-//
-// @function config-get
-//
-// @param $key     {string} The configuration path
-// @param $default {bool}   Whether the configuration is default
-//
-// @return         {*}      The value of the configuration path
+/// Gets a value to/from a configuration path
+///
+/// @param {String} $key     The configuration path
+/// @param {Bool}   $default Whether the configuration is default
 @mixin config-get($key, $default: false) {
   $config: config-get($key, $default);
 }
 
-// Remove settings
-//
-// @mixin config-reset
-//
-// @param $settings {string} Configuration path
-// @param $default  {bool}   Whether the configuration is default
-//
-// @return          {bool}   True if the configuration path is removed.
+/// Remove settings
+///
+/// @param {String} $settings Configuration path
+/// @param {Bool}   $default  Whether the configuration is default
 @mixin config-reset($settings, $default:false) {
   $config-reset: config-reset($settings);
 }
 
-// Sass Variables
-// - - - - - - - - - - - - - - - - - - - - - - - - -
-
-// The delimiter of configuration path
-//
-// @private
+/// The delimiter of configuration path
+///
+/// @access private
 $config-delimiter: "." !default;
 
-// The configuration storage
-//
-// @private
+/// The configuration storage
+///
+/// @access private
 $config-attr: () !default;
 
-// The default configuration storage
-//
-// @private
+/// The default configuration storage
+///
+/// @access private
 $config-default: () !default;
 
-// Namespace for settings
-//
-// @public
+/// Namespace for settings
+///
+/// @access public
 $config-namespace: "" !default;
 
-// Return list-map from `$list` and ensure input list-map is list-of-lists
-//
-// @function list-map-check
-//
-// @access public
-//
-// @param $list {list}
-//
-// @return      {list-map}
+/// Return list-map from `$list` and ensure input list-map is list-of-lists
+///
+/// @access public
+///
+/// @param  {List} $list
+///
+/// @return {List}
 @function list-map-check($list) {
   @if length($list) == 2 and length(nth($list, 1)) == 1 {
     @return append((), $list, "comma");
@@ -87,17 +69,15 @@ $config-namespace: "" !default;
   @return $list;
 }
 
-// Extracts a slice of a list
-//
-// @function list-slice
-//
-// @access private
-//
-// @param  $list  {list}   The list to extract
-// @param  $start {number} The start index to extract
-// @param  $end   {number} The end index to extract
-//
-// @return        {list}   The extracted list
+/// Extracts a slice of a list
+///
+/// @access private
+///
+/// @param  {List}   $list  The list to extract
+/// @param  {Number} $start The start index to extract
+/// @param  {Number} $end   The end index to extract
+///
+/// @return {List}          The extracted list
 @function list-slice($list, $start: 1, $end: length($list)) {
   $output: ();
 
@@ -110,17 +90,15 @@ $config-namespace: "" !default;
   @return $output;
 }
 
-// Sets a value to a Map by the map path
-//
-// @function config-map-set
-//
-// @access private
-//
-// @param $map   {map}    The Map
-// @param $path  {string} The map path
-// @param $value {*|null} The value to set
-//
-// @return       {map...} A new Map
+/// Sets a value to a Map by the map path
+///
+/// @access private
+///
+/// @param  {Map}    $map   The Map
+/// @param  {String} $path  The map path
+/// @param  {*|Null} $value The value to set
+///
+/// @return {Map}           A new Map
 @function config-map-set($map, $path, $value) {
   $map: list-map-check($map);
   $keys: str-split($path, $config-delimiter);
@@ -157,16 +135,14 @@ $config-namespace: "" !default;
   @return $map;
 }
 
-// Gets a value from a Map by the map path
-//
-// @function config-map-get
-//
-// @access private
-//
-// @param $map  {map...} The Map
-// @param $path {string} The map path
-//
-// @return      {*}      The value of the map path
+/// Gets a value from a Map by the map path
+///
+/// @access private
+///
+/// @param  {Map}    $map  The Map
+/// @param  {String} $path The map path
+///
+/// @return {*}            The value of the map path
 @function config-map-get($map, $path) {
   $keys: str-split($path, $config-delimiter);
   $value: list-map-check($map);
@@ -184,17 +160,14 @@ $config-namespace: "" !default;
   @return $value;
 }
 
-// Returns whether the key of a map path exists in a Map
-//
-// @function config-map-has
-//
-// @access private
-//
-// @param $map {map...} The Map
-// @param $key {string} The map path
-//
-// @return     {bool}   True if the map path has a value,
-//                            otherwise false
+/// Returns whether the key of a map path exists in a Map
+///
+/// @access private
+///
+/// @param  {Map}    $map The Map
+/// @param  {String} $key The map path
+///
+/// @return {Bool}       True if the map path has a value, otherwise false
 @function config-map-has($map, $key) {
   $keys: str-split($key, $config-delimiter);
   $value: list-map-check($map);
@@ -210,15 +183,13 @@ $config-namespace: "" !default;
   @return true;
 }
 
-// Recursively merges one or more maps
-//
-// @function config-map-merge
-//
-// @access private
-//
-// @param $maps {map...} The map(s) to merge
-//
-// @return      {map}    The merged map
+/// Recursively merges one or more maps
+///
+/// @access private
+///
+/// @param  {Map} $maps... The map(s) to merge
+///
+/// @return {Map}          The merged map
 @function config-map-merge($maps...) {
   $result: nth($maps, 1);
 
@@ -241,16 +212,14 @@ $config-namespace: "" !default;
   @return $result;
 }
 
-// Joins list elements with a string
-//
-// @function str-join
-//
-// @access private
-//
-// @param $list {list}   The list to join
-// @param $glue {string} The glue string to join list elements
-//
-// @return      {string} The joined string
+/// Joins list elements with a string
+///
+/// @access private
+///
+/// @param  {List}   $list The list to join
+/// @param  {String} $glue The glue string to join list elements
+///
+/// @return {String} The joined string
 @function str-join($list, $glue: "") {
   $result: "";
 
@@ -269,16 +238,14 @@ $config-namespace: "" !default;
   @return $result;
 }
 
-// Splits a string by a delimiter
-//
-// @function str-split
-//
-// @access private
-//
-// @param $string    {string} The string to split
-// @param $delimiter {string} The boundary string to split the string
-//
-// @return           {list}   The splitted list
+/// Splits a string by a delimiter
+///
+/// @access private
+///
+/// @param  {String} $string    The string to split
+/// @param  {String} $delimiter The boundary string to split the string
+///
+/// @return {List}              The splitted list
 @function str-split($string, $delimiter: "") {
   $result: ();
   $length: str-length($string);
@@ -308,14 +275,12 @@ $config-namespace: "" !default;
   @return append($result, $string);
 }
 
-// Gets a value to/from a configuration path
-//
-// @function config-get
-//
-// @param $key     {string} The configuration path
-// @param $default {bool}   Whether the configuration is default
-//
-// @return         {*}      The value of the configuration path
+/// Gets a value to/from a configuration path
+///
+/// @param {String} $key      The configuration path
+/// @param {Bool}   $default  Whether the configuration is default
+///
+/// @return         {*}       The value of the configuration path
 @function config-get($key, $default: false) {
   @if $default {
     @if config-map-has($config-default, $key) {
@@ -334,14 +299,11 @@ $config-namespace: "" !default;
   @return null;
 }
 
-// Returns whether a configuration path exists
-//
-// @function config-has
-//
-// @param $key {string} The configuration path
-//
-// @return     {bool}   True if the configuration path has a value,
-//                           otherwise false
+/// Returns whether a configuration path exists
+///
+/// @param  {String} $key The configuration path
+///
+/// @return {Bool}        True if the configuration path has a value, otherwise false
 @function config-has($key) {
   $key: $config-namespace + $key;
 
@@ -352,14 +314,12 @@ $config-namespace: "" !default;
   @return false;
 }
 
-// Remove settings
-//
-// @function config-reset
-//
-// @param $settings {string} Configuration path
-// @param $default  {bool}   Whether the configuration is default
-//
-// @return          {bool}   True if the configuration path is removed.
+/// Remove settings
+///
+/// @param  {String} $settings Configuration path
+/// @param  {Bool}   $default  Whether the configuration is default
+///
+/// @return {Bool}             True if the configuration path is removed.
 @function config-reset($settings, $default: false) {
   $settings: $config-namespace + $settings;
 
@@ -378,15 +338,13 @@ $config-namespace: "" !default;
   @return true;
 }
 
-// Sets a value to/from a configuration path
-//
-// @function config
-//
-// @param $key     {string} The configuration key
-// @param $value   {*}      The value to set
-// @param $default {bool}   Whether the configuration is default
-//
-// @return         {*}      The value of the configuration path
+/// Sets a value to/from a configuration path
+///
+/// @param {String} $key     The configuration key
+/// @param {*}      $value   The value to set
+/// @param {Bool}   $default Whether the configuration is default
+///
+/// @return         {*}      The value of the configuration path
 @function config-set($key, $value, $default: false) {
   $key: $config-namespace + $key;
 

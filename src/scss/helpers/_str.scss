@@ -1,15 +1,13 @@
 @charset "UTF-8";
 
-// Joins list elements with a string
-//
-// @function str-join
-//
-// @access private
-//
-// @param $list {list}   The list to join
-// @param $glue {string} The glue string to join list elements
-//
-// @return      {string} The joined string
+/// Joins list elements with a string
+///
+/// @access private
+///
+/// @param  {List}   $list The list to join
+/// @param  {String} $glue The glue string to join list elements
+///
+/// @return {String} The joined string
 @function str-join($list, $glue: "") {
   $result: "";
 
@@ -28,16 +26,14 @@
   @return $result;
 }
 
-// Splits a string by a delimiter
-//
-// @function str-split
-//
-// @access private
-//
-// @param $string    {string} The string to split
-// @param $delimiter {string} The boundary string to split the string
-//
-// @return           {list}   The splitted list
+/// Splits a string by a delimiter
+///
+/// @access private
+///
+/// @param  {String} $string    The string to split
+/// @param  {String} $delimiter The boundary string to split the string
+///
+/// @return {List}              The splitted list
 @function str-split($string, $delimiter: "") {
   $result: ();
   $length: str-length($string);

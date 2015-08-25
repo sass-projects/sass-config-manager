@@ -1,14 +1,12 @@
 @charset "UTF-8";
 
-// Sets a value to/from a configuration path
-//
-// @function config
-//
-// @param $key     {string} The configuration key
-// @param $value   {*}      The value to set
-// @param $default {bool}   Whether the configuration is default
-//
-// @return         {*}      The value of the configuration path
+/// Sets a value to/from a configuration path
+///
+/// @param {String} $key     The configuration key
+/// @param {*}      $value   The value to set
+/// @param {Bool}   $default Whether the configuration is default
+///
+/// @return         {*}      The value of the configuration path
 @function config-set($key, $value, $default: false) {
   $key: $config-namespace + $key;
 
