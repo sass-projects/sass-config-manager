@@ -9,6 +9,8 @@
 //
 // @return          {bool}   True if the configuration path is removed.
 @function config-reset($settings, $default: false) {
+  $settings: $config-namespace + $settings;
+
   @if length($settings) == 1 {
     $settings: nth($settings, 1);
   }

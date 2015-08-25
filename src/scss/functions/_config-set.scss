@@ -10,6 +10,8 @@
 //
 // @return         {*}      The value of the configuration path
 @function config-set($key, $value, $default: false) {
+  $key: $config-namespace + $key;
+
   @if $default {
     @if config-map-has($config-default, $key) {
       $value: config-map-get($config-default, $key);
