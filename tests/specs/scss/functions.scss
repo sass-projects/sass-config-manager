@@ -9,6 +9,23 @@
     $expect: ("bar": "foo", "color": #fff);
 
     @include assert-equal($config-attr, $expect, "Check if map is correct.");
+
+    @include config-reset("bar");
+    @include config-reset("color");
+  }
+
+   // Testing namespace set functions
+  @include test("config-set [function] Set a single key with namespace.") {
+    $config-namespace: "test-" !global;
+
+    @include config-set("bar", "foo");
+    @include config-set("color", #fff);
+
+    $expect: ("test-bar": "foo", "test-color": #fff);
+
+    $config-namespace: "" !global;
+
+    @include assert-equal($config-attr, $expect, "Check if map is correct.");
   }
 
   // Testing set functions

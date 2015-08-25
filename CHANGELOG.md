@@ -2,6 +2,10 @@
 
 All Notable changes to `sass-config-manager` will be documented in this file
 
+## 3.1.0 Release
+- Remove namespace from config-get
+- Added new tests for config-set with a namespace
+
 ## 3.0.0 Release
 
 ### Added
