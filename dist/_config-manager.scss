@@ -23,6 +23,18 @@
   $config: config-set($key, $value, $default);
 }
 
+// Gets a value to/from a configuration path
+//
+// @function config-get
+//
+// @param $key     {string} The configuration path
+// @param $default {bool}   Whether the configuration is default
+//
+// @return         {*}      The value of the configuration path
+@mixin config-get($key, $default: false) {
+  $config: config-get($key, $default);
+}
+
 // Remove settings
 //
 // @mixin config-reset
