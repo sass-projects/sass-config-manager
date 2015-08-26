@@ -1,5 +1,8 @@
 sudo: false
-cache: bundler
+cache:
+  directories:
+    - bundler
+    - node_modules
 
 language: node_js
 
@@ -17,3 +20,6 @@ before_install:
 before_script:
   - npm install
   - bower install
+
+matrix:
+  fast_finish: true
