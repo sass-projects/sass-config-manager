@@ -4,11 +4,11 @@
 [![devDependency Status](https://david-dm.org/growcss/sass-config-manager/dev-status.svg?style=flat-square)](https://david-dm.org/growcss/sass-config-manager#info=devDependencies)
 [![npm](https://img.shields.io/npm/v/growcss-sass-config-manager.svg?style=flat-square)](https://www.npmjs.com/package/growcss-sass-config-manager)
 [![Bower](https://img.shields.io/bower/v/sass-config-manager.svg?style=flat-square)](https://github.com/growcss/sass-config-manager)
-[![GitHub release](https://img.shields.io/github/release/growcss/sass-config-manager.svg?style=flat-square)](https://github.com/growcss/sass-config-manager/releases)
+[![GitHub release](https://img.shields.io/github/release/sass-projects/sass-config-manager.svg?style=flat-square)](https://github.com/sass-projects/sass-config-manager/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
 ## Master
-[![Build Status](https://travis-ci.org/growcss/sass-config-manager.svg?branch=master)](https://travis-ci.org/growcss/sass-config-manager)
+[![Build Status](https://travis-ci.org/sass-projects/sass-config-manager.svg?branch=master)](https://travis-ci.org/sass-projects/sass-config-manager)
 
 ### Bits and Pieces:
 * [npm:](https://npmjs.org/) Well... it's a Node.js package manager
@@ -42,6 +42,12 @@ grunt test
 ## How to
 
 ### Usage
+If you like to use config-mangers global variables, set
+~~~scss
+$config-manger-variables: global;
+~~~
+before you include config-manger.
+
 Include this library. If you use bower ``@import 'bower_components/sass-config-manager/src/scss/config-manager';`` or ``@import 'node_modules/growcss-sass-config-manager/src/scss/config-manager';``
 
 ### Set default settings

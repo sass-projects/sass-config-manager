@@ -5,7 +5,8 @@ var fs = require('fs'),
     srcFiles = [
             'src/scss/utils/*.scss',
             'src/scss/helpers/*.scss',
-            'src/scss/functions/*.scss'
+            'src/scss/functions/*.scss',
+            'src/scss/mixins/*.scss'
     ],
     processFunc = function(src, filepath) {
         src = src.replace(/(^|\n)[ \t]*(@charset "UTF-8";);?\s*/g, '$1');

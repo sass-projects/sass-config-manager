@@ -10,7 +10,7 @@
   "main": "./dist/_config-manager.scss",
   "repository": {
     "type": "git",
-    "url": "https://github.com/growcss/sass-config-manager.git"
+    "url": "https://github.com/sass-projects/sass-config-manager.git"
   },
   "directories": {
     "test": "tests"
@@ -19,7 +19,7 @@
     "test": "grunt test"
   },
   "bugs": {
-    "url": "https://github.com/growcss/sass-config-manager/issues"
+    "url": "https://github.com/sass-projects/sass-config-manager/issues"
   },
   "license": "MIT",
   "engines": {
@@ -31,7 +31,6 @@
     "grunt-bump": "^0.3.1",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-concat": "^0.5.1",
-    "grunt-contrib-watch": "^0.6.1",
     "grunt-mocha-cli": "^1.13.1",
     "grunt-newer": "^1.1.1",
     "grunt-sassdoc": "^2.0.1",
