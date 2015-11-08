@@ -1,21 +1,46 @@
 @charset "UTF-8";
 
-/// The delimiter of configuration path
-///
-/// @access private
-$config-delimiter: "." !default;
+/// Setting to use global vars
+$config-manger-variables: "" !default !global;
 
-/// The configuration storage
-///
-/// @access private
-$config-attr: () !default;
+@if $config-manger-variables == "global" {
+  /// The delimiter of configuration path
+  ///
+  /// @access private
+  $config-delimiter: "." !default !global;
 
-/// The default configuration storage
-///
-/// @access private
-$config-default: () !default;
+  /// The configuration storage
+  ///
+  /// @access private
+  $config-attr: () !default !global;
 
-/// Namespace for settings
-///
-/// @access public
-$config-namespace: "" !default;
+  /// The default configuration storage
+  ///
+  /// @access private
+  $config-default: () !default !global;
+
+  /// Namespace for settings
+  ///
+  /// @access public
+  $config-namespace: "" !default !global;
+} @else {
+  /// The delimiter of configuration path
+  ///
+  /// @access private
+  $config-delimiter: "." !default;
+
+  /// The configuration storage
+  ///
+  /// @access private
+  $config-attr: () !default;
+
+  /// The default configuration storage
+  ///
+  /// @access private
+  $config-default: () !default;
+
+  /// Namespace for settings
+  ///
+  /// @access public
+  $config-namespace: "" !default;
+}

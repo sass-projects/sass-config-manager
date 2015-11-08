@@ -9,50 +9,50 @@
 //      This project is licensed under the terms of the MIT license
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/// Sets a value to a configuration path
-///
-/// @param {String} $key     The configuration key
-/// @param {*|Null} $value   The value to set
-/// @param {Bool}   $default Whether the configuration is default
-@mixin config-set($key, $value, $default: false) {
-  $config: config-set($key, $value, $default);
+/// Setting to use global vars
+$config-manger-variables: "" !default !global;
+
+@if $config-manger-variables == "global" {
+  /// The delimiter of configuration path
+  ///
+  /// @access private
+  $config-delimiter: "." !default !global;
+
+  /// The configuration storage
+  ///
+  /// @access private
+  $config-attr: () !default !global;
+
+  /// The default configuration storage
+  ///
+  /// @access private
+  $config-default: () !default !global;
+
+  /// Namespace for settings
+  ///
+  /// @access public
+  $config-namespace: "" !default !global;
+} @else {
+  /// The delimiter of configuration path
+  ///
+  /// @access private
+  $config-delimiter: "." !default;
+
+  /// The configuration storage
+  ///
+  /// @access private
+  $config-attr: () !default;
+
+  /// The default configuration storage
+  ///
+  /// @access private
+  $config-default: () !default;
+
+  /// Namespace for settings
+  ///
+  /// @access public
+  $config-namespace: "" !default;
 }
-
-/// Gets a value to/from a configuration path
-///
-/// @param {String} $key     The configuration path
-/// @param {Bool}   $default Whether the configuration is default
-@mixin config-get($key, $default: false) {
-  $config: config-get($key, $default);
-}
-
-/// Remove settings
-///
-/// @param {String} $settings Configuration path
-/// @param {Bool}   $default  Whether the configuration is default
-@mixin config-reset($settings, $default:false) {
-  $config-reset: config-reset($settings);
-}
-
-/// The delimiter of configuration path
-///
-/// @access private
-$config-delimiter: "." !default;
-
-/// The configuration storage
-///
-/// @access private
-$config-attr: () !default;
-
-/// The default configuration storage
-///
-/// @access private
-$config-default: () !default;
-
-/// Namespace for settings
-///
-/// @access public
-$config-namespace: "" !default;
 
 /// Return list-map from `$list` and ensure input list-map is list-of-lists
 ///
@@ -359,4 +359,29 @@ $config-namespace: "" !default;
   }
 
   @return $value;
+}
+
+/// Sets a value to a configuration path
+///
+/// @param {String} $key     The configuration key
+/// @param {*|Null} $value   The value to set
+/// @param {Bool}   $default Whether the configuration is default
+@mixin config-set($key, $value, $default: false) {
+  $config: config-set($key, $value, $default);
+}
+
+/// Gets a value to/from a configuration path
+///
+/// @param {String} $key     The configuration path
+/// @param {Bool}   $default Whether the configuration is default
+@mixin config-get($key, $default: false) {
+  $config: config-get($key, $default);
+}
+
+/// Remove settings
+///
+/// @param {String} $settings Configuration path
+/// @param {Bool}   $default  Whether the configuration is default
+@mixin config-reset($settings, $default:false) {
+  $config-reset: config-reset($settings);
 }
