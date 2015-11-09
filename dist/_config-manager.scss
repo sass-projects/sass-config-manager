@@ -149,7 +149,7 @@ $config-manger-variables: "" !default !global;
 
   @each $key in $keys {
     @if type-of($value) != "map" or not map-has-key($value, $key) {
-      @warn "The path '#{$path}' doesn\'t exist.";
+      @warn "The path '#{$path}' doesn\"t exist.";
 
       @return null;
     }
@@ -294,7 +294,7 @@ $config-manger-variables: "" !default !global;
     }
   }
 
-  @warn "The key '#{$key}' doesn\'t exist.";
+  @warn "The key '#{$key}' doesn\"t exist.";
 
   @return null;
 }
