@@ -14,10 +14,18 @@
     @if config-map-has($config-default, $key) {
       $value: config-map-get($config-default, $key);
     } @else {
-      $config-default: config-map-set($config-default, $key, $value) !global;
+      @if ($config-manger-variables == 'global') {
+        $config-default: config-map-set($config-default, $key, $value) !global;
+      } @else {
+        $config-default: config-map-set($config-default, $key, $value);
+      }
     }
   } @else {
-    $config-attr: config-map-set($config-attr, $key, $value) !global;
+    @if ($config-manger-variables == 'global') {
+      $config-attr: config-map-set($config-attr, $key, $value) !global;
+    } @else {
+      $config-attr: config-map-set($config-attr, $key, $value);
+    }
   }
 
   @return $value;
