@@ -8,14 +8,14 @@
 /// @return         {*}       The value of the configuration path
 @function config-get($key, $default: false) {
   @if $default {
-    @if config-map-has($config-default, $key) {
-      @return config-map-get($config-default, $key);
+    @if config-map-has($sass-config-default, $key) {
+      @return config-map-get($sass-config-default, $key);
     }
   } @else {
-    @if config-map-has($config-attr, $key) {
-      @return config-map-get($config-attr, $key);
-    } @else if config-map-has($config-default, $key) {
-      @return config-map-get($config-default, $key);
+    @if config-map-has($sass-config-attr, $key) {
+      @return config-map-get($sass-config-attr, $key);
+    } @else if config-map-has($sass-config-default, $key) {
+      @return config-map-get($sass-config-default, $key);
     }
   }
 

@@ -42,12 +42,6 @@ grunt test
 ## How to
 
 ### Usage
-If you like to use config-mangers global variables, set
-~~~scss
-$config-manger-variables: global;
-~~~
-before you include config-manger.
-
 Include this library. If you use bower ``@import 'bower_components/growcss-sass-config-manager/src/scss/config-manager';`` or ``@import 'node_modules/growcss-sass-config-manager/src/scss/config-manager';``
 
 ### Set default settings

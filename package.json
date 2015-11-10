@@ -25,6 +25,10 @@
   "engines": {
     "node": ">= 0.10.0"
   },
+  "eyeglass": {
+    "needs": "4.0.0",
+    "exports": "eyeglass-exports.js"
+  },
   "devDependencies": {
     "bower": "~1.6.5",
     "grunt": "^0.4.5",

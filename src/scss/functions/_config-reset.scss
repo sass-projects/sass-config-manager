@@ -7,7 +7,7 @@
 ///
 /// @return {Bool}             True if the configuration path is removed.
 @function config-reset($settings, $default: false) {
-  $settings: $config-namespace + $settings;
+  $settings: $sass-config-namespace + $settings;
 
   @if length($settings) == 1 {
     $settings: nth($settings, 1);
@@ -15,17 +15,9 @@
 
   @each $setting in $settings {
     @if ($default) {
-      @if ($config-manger-variables == 'global') {
-        $config-default: map-remove($config-default, $setting) !global;
-      } @else {
-        $config-default: map-remove($config-default, $setting);
-      }
+      $sass-config-default: map-remove($sass-config-default, $setting) !global;
     } @else {
-      @if ($config-manger-variables == 'global') {
-        $config-attr: map-remove($config-attr, $setting) !global;
-      } @else {
-        $config-attr: map-remove($config-attr, $setting);
-      }
+      $sass-config-attr: map-remove($sass-config-attr, $setting) !global;
     }
   }
 

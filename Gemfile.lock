@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    psych (2.0.0)
     rainbow (2.0.0)
     sass (3.4.14)
     scss_lint (0.40.1)
@@ -11,7 +12,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  sass (= 3.4.14)
+  psych (= 2.0)
   scss_lint (= 0.40.1)
 
 BUNDLED WITH
