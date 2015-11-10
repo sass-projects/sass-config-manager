@@ -7,7 +7,7 @@
     "email": "d.bannert@anolilab.de"
   },
   "homepage": "http://growcss.com/",
-  "main": "./dist/_config-manager.scss",
+  "main": "./sass/_sass-config-manager.scss",
   "repository": {
     "type": "git",
     "url": "https://github.com/sass-projects/sass-config-manager.git"
@@ -26,7 +26,7 @@
     "node": ">= 0.10.0"
   },
   "eyeglass": {
-    "name": "growcss-sass-config-manager",
+    "name": "sass-config-manager",
     "exports": "eyeglass-exports.js"
   },
   "devDependencies": {
