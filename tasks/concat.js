@@ -23,16 +23,7 @@ module.exports = {
             process: processFunc
         },
         src: srcFiles,
-        dest: 'dist/_config-manager.scss',
-    },
-    eyeglass: {
-        options: {
-            // Replace all 'use strict' statements in the code with a single one at the top
-            banner: fs.readFileSync('./banner.txt', 'utf8'),
-            process: processFunc
-        },
-        src: srcFiles,
-        dest: 'sass/index.scss',
+        dest: 'sass/_sass-config-manager.scss',
     },
     test: {
         options: {
