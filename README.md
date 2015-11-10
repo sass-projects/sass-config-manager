@@ -89,10 +89,6 @@ body {
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## Security
-
-If you discover any security related issues, please email d.bannert@anolilab.de instead of using the issue tracker.
-
 ## Credits
 
 - [Daniel Bannert](https://github.com/sass-projects)
