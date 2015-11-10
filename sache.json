@@ -1,5 +1,5 @@
 {
-  "name": "growcss-sass-config-manager",
+  "name": "sass-config-manager",
   "description": "A dot-syntax configuration (Map) library for Sass (mixin / function).",
   "tags": [
     "config",

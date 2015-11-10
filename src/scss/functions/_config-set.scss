@@ -8,24 +8,16 @@
 ///
 /// @return         {*}      The value of the configuration path
 @function config-set($key, $value, $default: false) {
-  $key: $config-namespace + $key;
+  $key: $sass-config-namespace + $key;
 
   @if $default {
-    @if config-map-has($config-default, $key) {
-      $value: config-map-get($config-default, $key);
+    @if config-map-has($sass-config-default, $key) {
+      $value: config-map-get($sass-config-default, $key);
     } @else {
-      @if ($config-manger-variables == 'global') {
-        $config-default: config-map-set($config-default, $key, $value) !global;
-      } @else {
-        $config-default: config-map-set($config-default, $key, $value);
-      }
+      $sass-config-default: config-map-set($sass-config-default, $key, $value) !global;
     }
   } @else {
-    @if ($config-manger-variables == 'global') {
-      $config-attr: config-map-set($config-attr, $key, $value) !global;
-    } @else {
-      $config-attr: config-map-set($config-attr, $key, $value);
-    }
+    $sass-config-attr: config-map-set($sass-config-attr, $key, $value) !global;
   }
 
   @return $value;

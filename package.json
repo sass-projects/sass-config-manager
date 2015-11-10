@@ -1,6 +1,6 @@
 {
-  "name": "growcss-sass-config-manager",
-  "version": "3.1.1",
+  "name": "sass-config-manager",
+  "version": "4.0.0",
   "description": "A dot-syntax configuration (Map) library for Sass (mixin / function).",
   "author": {
     "name": "Daniel Bannert",
@@ -24,6 +24,10 @@
   "license": "MIT",
   "engines": {
     "node": ">= 0.10.0"
+  },
+  "eyeglass": {
+    "name": "growcss-sass-config-manager",
+    "exports": "eyeglass-exports.js"
   },
   "devDependencies": {
     "bower": "~1.6.5",

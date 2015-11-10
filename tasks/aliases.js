@@ -8,6 +8,7 @@ module.exports = {
     'default': [
         'test',
         'concat:dist',
+        'concat:eyeglass',
         'sassdoc'
     ]
 };

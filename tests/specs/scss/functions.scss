@@ -8,7 +8,7 @@
 
     $expect: ("bar": "foo", "color": #fff);
 
-    @include assert-equal($config-attr, $expect, "Check if map is correct.");
+    @include assert-equal($sass-config-attr, $expect, "Check if map is correct.");
 
     @include config-reset("bar");
     @include config-reset("color");
@@ -16,16 +16,16 @@
 
    // Testing namespace set functions
   @include test("config-set [function] Set a single key with namespace.") {
-    $config-namespace: "test-" !global;
+    $sass-config-namespace: "test-" !global;
 
     @include config-set("bar", "foo");
     @include config-set("color", #fff);
 
     $expect: ("test-bar": "foo", "test-color": #fff);
 
-    $config-namespace: "" !global;
+    $sass-config-namespace: "" !global;
 
-    @include assert-equal($config-attr, $expect, "Check if map is correct.");
+    @include assert-equal($sass-config-attr, $expect, "Check if map is correct.");
   }
 
   // Testing set functions
@@ -33,7 +33,7 @@
     @include config-set("single-default", "foo", true);
 
     $expect: ("single-default": "foo");
-    @include assert-equal($config-default, $expect, "Check if map is correct.");
+    @include assert-equal($sass-config-default, $expect, "Check if map is correct.");
   }
 
   // Testing set functions

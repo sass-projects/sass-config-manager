@@ -9,50 +9,25 @@
 //      This project is licensed under the terms of the MIT license
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/// Setting to use global vars
-$config-manger-variables: "" !default !global;
+/// The delimiter of configuration path
+///
+/// @access private
+$sass-config-delimiter: "." !default !global;
 
-@if $config-manger-variables == "global" {
-  /// The delimiter of configuration path
-  ///
-  /// @access private
-  $config-delimiter: "." !default !global;
+/// The configuration storage
+///
+/// @access private
+$sass-config-attr: () !default !global;
 
-  /// The configuration storage
-  ///
-  /// @access private
-  $config-attr: () !default !global;
+/// The default configuration storage
+///
+/// @access private
+$sass-config-default: () !default !global;
 
-  /// The default configuration storage
-  ///
-  /// @access private
-  $config-default: () !default !global;
-
-  /// Namespace for settings
-  ///
-  /// @access public
-  $config-namespace: "" !default !global;
-} @else {
-  /// The delimiter of configuration path
-  ///
-  /// @access private
-  $config-delimiter: "." !default;
-
-  /// The configuration storage
-  ///
-  /// @access private
-  $config-attr: () !default;
-
-  /// The default configuration storage
-  ///
-  /// @access private
-  $config-default: () !default;
-
-  /// Namespace for settings
-  ///
-  /// @access public
-  $config-namespace: "" !default;
-}
+/// Namespace for settings
+///
+/// @access public
+$sass-config-namespace: "" !default !global;
 
 /// Return list-map from `$list` and ensure input list-map is list-of-lists
 ///
@@ -101,7 +76,7 @@ $config-manger-variables: "" !default !global;
 /// @return {Map}           A new Map
 @function config-map-set($map, $path, $value) {
   $map: list-map-check($map);
-  $keys: str-split($path, $config-delimiter);
+  $keys: str-split($path, $sass-config-delimiter);
   $length: length($keys);
 
   $result: (nth($keys, $length): $value);
@@ -114,7 +89,7 @@ $config-manger-variables: "" !default !global;
       $j: $length - $i;
       $key: nth($keys, $j);
 
-      $path: str-join(list-slice($keys, 1, $j), $config-delimiter);
+      $path: str-join(list-slice($keys, 1, $j), $sass-config-delimiter);
 
       @if config-map-has($map, $path) {
         $value: config-map-get($map, $path);
@@ -144,12 +119,12 @@ $config-manger-variables: "" !default !global;
 ///
 /// @return {*}            The value of the map path
 @function config-map-get($map, $path) {
-  $keys: str-split($path, $config-delimiter);
+  $keys: str-split($path, $sass-config-delimiter);
   $value: list-map-check($map);
 
   @each $key in $keys {
     @if type-of($value) != "map" or not map-has-key($value, $key) {
-      @warn "The path '#{$path}' doesn\'t exist.";
+      @warn "The path '#{$path}' doesn\"t exist.";
 
       @return null;
     }
@@ -169,7 +144,7 @@ $config-manger-variables: "" !default !global;
 ///
 /// @return {Bool}       True if the map path has a value, otherwise false
 @function config-map-has($map, $key) {
-  $keys: str-split($key, $config-delimiter);
+  $keys: str-split($key, $sass-config-delimiter);
   $value: list-map-check($map);
 
   @each $key in $keys {
@@ -283,18 +258,18 @@ $config-manger-variables: "" !default !global;
 /// @return         {*}       The value of the configuration path
 @function config-get($key, $default: false) {
   @if $default {
-    @if config-map-has($config-default, $key) {
-      @return config-map-get($config-default, $key);
+    @if config-map-has($sass-config-default, $key) {
+      @return config-map-get($sass-config-default, $key);
     }
   } @else {
-    @if config-map-has($config-attr, $key) {
-      @return config-map-get($config-attr, $key);
-    } @else if config-map-has($config-default, $key) {
-      @return config-map-get($config-default, $key);
+    @if config-map-has($sass-config-attr, $key) {
+      @return config-map-get($sass-config-attr, $key);
+    } @else if config-map-has($sass-config-default, $key) {
+      @return config-map-get($sass-config-default, $key);
     }
   }
 
-  @warn "The key '#{$key}' doesn\'t exist.";
+  @warn "The key '#{$key}' doesn\"t exist.";
 
   @return null;
 }
@@ -305,9 +280,9 @@ $config-manger-variables: "" !default !global;
 ///
 /// @return {Bool}        True if the configuration path has a value, otherwise false
 @function config-has($key) {
-  $key: $config-namespace + $key;
+  $key: $sass-config-namespace + $key;
 
-  @if config-map-has($config-attr, $key) or config-map-has($config-default, $key) {
+  @if config-map-has($sass-config-attr, $key) or config-map-has($sass-config-default, $key) {
     @return true;
   }
 
@@ -321,7 +296,7 @@ $config-manger-variables: "" !default !global;
 ///
 /// @return {Bool}             True if the configuration path is removed.
 @function config-reset($settings, $default: false) {
-  $settings: $config-namespace + $settings;
+  $settings: $sass-config-namespace + $settings;
 
   @if length($settings) == 1 {
     $settings: nth($settings, 1);
@@ -329,9 +304,9 @@ $config-manger-variables: "" !default !global;
 
   @each $setting in $settings {
     @if ($default) {
-      $config-default: map-remove($config-default, $setting) !global;
+      $sass-config-default: map-remove($sass-config-default, $setting) !global;
     } @else {
-      $config-attr: map-remove($config-attr, $setting) !global;
+      $sass-config-attr: map-remove($sass-config-attr, $setting) !global;
     }
   }
 
@@ -346,16 +321,16 @@ $config-manger-variables: "" !default !global;
 ///
 /// @return         {*}      The value of the configuration path
 @function config-set($key, $value, $default: false) {
-  $key: $config-namespace + $key;
+  $key: $sass-config-namespace + $key;
 
   @if $default {
-    @if config-map-has($config-default, $key) {
-      $value: config-map-get($config-default, $key);
+    @if config-map-has($sass-config-default, $key) {
+      $value: config-map-get($sass-config-default, $key);
     } @else {
-      $config-default: config-map-set($config-default, $key, $value) !global;
+      $sass-config-default: config-map-set($sass-config-default, $key, $value) !global;
     }
   } @else {
-    $config-attr: config-map-set($config-attr, $key, $value) !global;
+    $sass-config-attr: config-map-set($sass-config-attr, $key, $value) !global;
   }
 
   @return $value;
