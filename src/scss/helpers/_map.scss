@@ -11,7 +11,7 @@
 /// @return {Map}           A new Map
 @function config-map-set($map, $path, $value) {
   $map: list-map-check($map);
-  $keys: str-split($path, $config-delimiter);
+  $keys: str-split($path, $sass-config-delimiter);
   $length: length($keys);
 
   $result: (nth($keys, $length): $value);
@@ -24,7 +24,7 @@
       $j: $length - $i;
       $key: nth($keys, $j);
 
-      $path: str-join(list-slice($keys, 1, $j), $config-delimiter);
+      $path: str-join(list-slice($keys, 1, $j), $sass-config-delimiter);
 
       @if config-map-has($map, $path) {
         $value: config-map-get($map, $path);
@@ -54,12 +54,12 @@
 ///
 /// @return {*}            The value of the map path
 @function config-map-get($map, $path) {
-  $keys: str-split($path, $config-delimiter);
+  $keys: str-split($path, $sass-config-delimiter);
   $value: list-map-check($map);
 
   @each $key in $keys {
     @if type-of($value) != "map" or not map-has-key($value, $key) {
-      @warn "The path '#{$path}' doesn\'t exist.";
+      @warn "The path '#{$path}' doesn\"t exist.";
 
       @return null;
     }
@@ -79,7 +79,7 @@
 ///
 /// @return {Bool}       True if the map path has a value, otherwise false
 @function config-map-has($map, $key) {
-  $keys: str-split($key, $config-delimiter);
+  $keys: str-split($key, $sass-config-delimiter);
   $value: list-map-check($map);
 
   @each $key in $keys {
