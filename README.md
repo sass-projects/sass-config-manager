@@ -19,7 +19,7 @@
 ## Getting Started:
 
 1. You need to have npm installed (it comes with node)
-2. Clone this repository: `git clone git@github.com:anolilab/skeljs.git`
+2. Clone this repository: `git clone git@github.com:sass-projects/sass-config-manager.git`
 3. Install dependencies: `npm install`
 
 ## Install
@@ -42,6 +42,12 @@ grunt test
 ## How to
 
 ### Usage
+If you like to use sass-config-mangers global variable, set
+~~~scss
+$config-manger-variables: global;
+~~~
+before you include sass-config-manger.
+
 Include this library. If you use bower ``@import 'bower_components/sass-config-manager/sass/_sass-config-manager.scss';`` or ``@import 'node_modules/sass-config-manager/sass/_sass-config-manager.scss';``
 
 ### Set default settings
@@ -92,6 +98,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Credits
 
 - [Daniel Bannert](https://github.com/sass-projects)
+- [Andrey Mikhaylov](https://github.com/lolmaus)
 - [All Contributors](../../contributors)
 
 ## License
