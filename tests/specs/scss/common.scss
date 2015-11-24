@@ -1,5 +1,4 @@
-
-@include test-module("Functions") {
+@include test-module("Common") {
 
   // Testing set functions
   @include test("config-set [function] Set a single key.") {
@@ -12,20 +11,6 @@
 
     @include config-reset("bar");
     @include config-reset("color");
-  }
-
-   // Testing namespace set functions
-  @include test("config-set [function] Set a single key with namespace.") {
-    $sass-config-namespace: "test-" !global;
-
-    @include config-set("bar", "foo");
-    @include config-set("color", #fff);
-
-    $expect: ("test-bar": "foo", "test-color": #fff);
-
-    $sass-config-namespace: "" !global;
-
-    @include assert-equal($sass-config-attr, $expect, "Check if map is correct.");
   }
 
   // Testing set functions

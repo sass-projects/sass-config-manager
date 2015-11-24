@@ -15,9 +15,17 @@
 
   @each $setting in $settings {
     @if ($default) {
-      $sass-config-default: map-remove($sass-config-default, $setting) !global;
+      @if ($config-manger-variables == "global") {
+        $sass-config-default: map-remove($sass-config-default, $setting) !global;
+      } @else {
+        $sass-config-default: map-remove($sass-config-default, $setting);
+      }
     } @else {
-      $sass-config-attr: map-remove($sass-config-attr, $setting) !global;
+      @if ($config-manger-variables == "global") {
+        $sass-config-attr: map-remove($sass-config-attr, $setting) !global;
+      } @else {
+        $sass-config-attr: map-remove($sass-config-attr, $setting);
+      }
     }
   }
 

@@ -1,7 +1,26 @@
 @import "true";
 
-// Import all files
-@import "config-manager";
 
-// Import test files
-@import "scss/functions";
+// ----- Testing local setup -----
+
+@at-root {
+  @import "config-manager";
+  @import "scss/common";
+}
+
+@at-root {
+  @import "config-manager";
+  @import "scss/local";
+}
+
+
+// ----- Testing global setup -----
+
+$config-manger-variables: "global" !global;
+
+@import "config-manager";
+@import "scss/common";
+
+$sass-config-attr: () !global;
+
+@import "scss/global";
