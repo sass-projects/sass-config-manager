@@ -6,7 +6,7 @@
 /// @param {*}      $value   The value to set
 /// @param {Bool}   $default Whether the configuration is default
 ///
-/// @return         {*}      The value of the configuration path
+/// @return {*}              The value of the configuration path
 @function config-set($key, $value, $default: false) {
   $key: $sass-config-namespace + $key;
 
@@ -14,10 +14,18 @@
     @if config-map-has($sass-config-default, $key) {
       $value: config-map-get($sass-config-default, $key);
     } @else {
-      $sass-config-default: config-map-set($sass-config-default, $key, $value) !global;
+      @if ($config-manger-variables == "global") {
+        $sass-config-default: config-map-set($sass-config-default, $key, $value) !global;
+      } @else {
+        $sass-config-default: config-map-set($sass-config-default, $key, $value);
+      }
     }
   } @else {
-    $sass-config-attr: config-map-set($sass-config-attr, $key, $value) !global;
+    @if ($config-manger-variables == "global") {
+      $sass-config-attr: config-map-set($sass-config-attr, $key, $value) !global;
+    } @else {
+      $sass-config-attr: config-map-set($sass-config-attr, $key, $value);
+    }
   }
 
   @return $value;

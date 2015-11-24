@@ -5,7 +5,7 @@
 /// @param {String} $key      The configuration path
 /// @param {Bool}   $default  Whether the configuration is default
 ///
-/// @return         {*}       The value of the configuration path
+/// @return {*}               The value of the configuration path
 @function config-get($key, $default: false) {
   @if $default {
     @if config-map-has($sass-config-default, $key) {
