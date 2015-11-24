@@ -2,7 +2,7 @@
 
 [![Author](http://img.shields.io/badge/author-@anolilab-blue.svg?style=flat-square)](https://twitter.com/anolilab)
 [![devDependency Status](https://david-dm.org/sass-projects/sass-config-manager/dev-status.svg?style=flat-square)](https://david-dm.org/sass-projects/sass-config-manager#info=devDependencies)
-[![npm](https://img.shields.io/npm/v/sass-projects-sass-config-manager.svg?style=flat-square)](https://www.npmjs.com/package/sass-projects-sass-config-manager)
+[![npm](https://img.shields.io/npm/v/sass-config-manager.svg?style=flat-square)](https://www.npmjs.com/package/sass-projects-sass-config-manager)
 [![Bower](https://img.shields.io/bower/v/sass-config-manager.svg?style=flat-square)](https://github.com/sass-projects/sass-config-manager)
 [![GitHub release](https://img.shields.io/github/release/sass-projects/sass-config-manager.svg?style=flat-square)](https://github.com/sass-projects/sass-config-manager/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
