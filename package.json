@@ -1,6 +1,6 @@
 {
   "name": "sass-config-manager",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A dot-syntax configuration (Map) library for Sass (mixin / function).",
   "author": {
     "name": "Daniel Bannert",
