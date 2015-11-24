@@ -1,0 +1,15 @@
+@include test-module("Local") {
+   // Testing namespace set functions
+  @include test("config-set [function] Set a single key with namespace.") {
+    $sass-config-namespace: "test-";
+
+    @include config-set("bar", "foo");
+    @include config-set("color", #fff);
+
+    $expect: ("test-bar": "foo", "test-color": #fff);
+
+    $sass-config-namespace: "";
+
+    @include assert-equal($sass-config-attr, $expect, "Check if map is correct.");
+  }
+}

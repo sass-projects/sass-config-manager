@@ -9,25 +9,50 @@
 //      This project is licensed under the terms of the MIT license
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-/// The delimiter of configuration path
-///
-/// @access private
-$sass-config-delimiter: "." !default !global;
+/// Setting to use global vars
+$config-manger-variables: "" !default !global;
 
-/// The configuration storage
-///
-/// @access private
-$sass-config-attr: () !default !global;
+@if $config-manger-variables == "global" {
+  /// The delimiter of configuration path
+  ///
+  /// @access private
+  $sass-config-delimiter: "." !default !global;
 
-/// The default configuration storage
-///
-/// @access private
-$sass-config-default: () !default !global;
+  /// The configuration storage
+  ///
+  /// @access private
+  $sass-config-attr: () !default !global;
 
-/// Namespace for settings
-///
-/// @access public
-$sass-config-namespace: "" !default !global;
+  /// The default configuration storage
+  ///
+  /// @access private
+  $sass-config-default: () !default !global;
+
+  /// Namespace for settings
+  ///
+  /// @access public
+  $sass-config-namespace: "" !default !global;
+} @else {
+  /// The delimiter of configuration path
+  ///
+  /// @access private
+  $sass-config-delimiter: "." !default;
+
+  /// The configuration storage
+  ///
+  /// @access private
+  $sass-config-attr: () !default;
+
+  /// The default configuration storage
+  ///
+  /// @access private
+  $sass-config-default: () !default;
+
+  /// Namespace for settings
+  ///
+  /// @access public
+  $sass-config-namespace: "" !default;
+}
 
 /// Return list-map from `$list` and ensure input list-map is list-of-lists
 ///
@@ -255,7 +280,7 @@ $sass-config-namespace: "" !default !global;
 /// @param {String} $key      The configuration path
 /// @param {Bool}   $default  Whether the configuration is default
 ///
-/// @return         {*}       The value of the configuration path
+/// @return {*}               The value of the configuration path
 @function config-get($key, $default: false) {
   @if $default {
     @if config-map-has($sass-config-default, $key) {
@@ -304,9 +329,17 @@ $sass-config-namespace: "" !default !global;
 
   @each $setting in $settings {
     @if ($default) {
-      $sass-config-default: map-remove($sass-config-default, $setting) !global;
+      @if ($config-manger-variables == "global") {
+        $sass-config-default: map-remove($sass-config-default, $setting) !global;
+      } @else {
+        $sass-config-default: map-remove($sass-config-default, $setting);
+      }
     } @else {
-      $sass-config-attr: map-remove($sass-config-attr, $setting) !global;
+      @if ($config-manger-variables == "global") {
+        $sass-config-attr: map-remove($sass-config-attr, $setting) !global;
+      } @else {
+        $sass-config-attr: map-remove($sass-config-attr, $setting);
+      }
     }
   }
 
@@ -319,7 +352,7 @@ $sass-config-namespace: "" !default !global;
 /// @param {*}      $value   The value to set
 /// @param {Bool}   $default Whether the configuration is default
 ///
-/// @return         {*}      The value of the configuration path
+/// @return {*}              The value of the configuration path
 @function config-set($key, $value, $default: false) {
   $key: $sass-config-namespace + $key;
 
@@ -327,10 +360,18 @@ $sass-config-namespace: "" !default !global;
     @if config-map-has($sass-config-default, $key) {
       $value: config-map-get($sass-config-default, $key);
     } @else {
-      $sass-config-default: config-map-set($sass-config-default, $key, $value) !global;
+      @if ($config-manger-variables == "global") {
+        $sass-config-default: config-map-set($sass-config-default, $key, $value) !global;
+      } @else {
+        $sass-config-default: config-map-set($sass-config-default, $key, $value);
+      }
     }
   } @else {
-    $sass-config-attr: config-map-set($sass-config-attr, $key, $value) !global;
+    @if ($config-manger-variables == "global") {
+      $sass-config-attr: config-map-set($sass-config-attr, $key, $value) !global;
+    } @else {
+      $sass-config-attr: config-map-set($sass-config-attr, $key, $value);
+    }
   }
 
   @return $value;

@@ -1,21 +1,46 @@
 @charset "UTF-8";
 
-/// The delimiter of configuration path
-///
-/// @access private
-$sass-config-delimiter: "." !default !global;
+/// Setting to use global vars
+$config-manger-variables: "" !default !global;
 
-/// The configuration storage
-///
-/// @access private
-$sass-config-attr: () !default !global;
+@if $config-manger-variables == "global" {
+  /// The delimiter of configuration path
+  ///
+  /// @access private
+  $sass-config-delimiter: "." !default !global;
 
-/// The default configuration storage
-///
-/// @access private
-$sass-config-default: () !default !global;
+  /// The configuration storage
+  ///
+  /// @access private
+  $sass-config-attr: () !default !global;
 
-/// Namespace for settings
-///
-/// @access public
-$sass-config-namespace: "" !default !global;
+  /// The default configuration storage
+  ///
+  /// @access private
+  $sass-config-default: () !default !global;
+
+  /// Namespace for settings
+  ///
+  /// @access public
+  $sass-config-namespace: "" !default !global;
+} @else {
+  /// The delimiter of configuration path
+  ///
+  /// @access private
+  $sass-config-delimiter: "." !default;
+
+  /// The configuration storage
+  ///
+  /// @access private
+  $sass-config-attr: () !default;
+
+  /// The default configuration storage
+  ///
+  /// @access private
+  $sass-config-default: () !default;
+
+  /// Namespace for settings
+  ///
+  /// @access public
+  $sass-config-namespace: "" !default;
+}
